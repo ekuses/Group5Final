@@ -75,19 +75,27 @@ A final note: **order matters** when using middleware. If you place `app.use()` 
 If the concept of middleware is still confusing, you can read [this blog post](https://www.safaribooksonline.com/blog/2014/03/10/express-js-middleware-demystified/) for further information. 
 
 ## Assignment Details
-Now go ahead and clone this assignment's repository. You'll notice that the file structure of the application is now more involved than previous assignments. Browse around and take note of where each part of the application exists. A good exercise would be to diagram how the different files are communicating with one another. 
+Now go ahead and clone this assignment's repository. You'll notice that the file structure of the application is now more involved than previous assignments. Browse around and take note of where each part of the application exists. 
 
 Navigate to `server/config/express.js`. This is where you will place code to configure your Express application. The **morgan** module is used to log requests to the console for debugging purposes. The **body parser** module is middleware that will allow you to access any data sent in requests as `req.body`. 
 
 In `server/routes/listings.server.routes.js`, you will find code that specifies the request handlers for CRUD tasks. To learn more about the Express router, [go to this page](http://expressjs.com/en/guide/routing.html) and scroll down to the section on *express.Router.*
 
-Instructions: 
+### Part 1
+Create a diagram of how the different parts of the server interact with one another. Specifially make note of: 
+   - what is defined in the controllers
+   - how the router makes use of the controllers to determine the flow of request handling
+   - how middleware is used throughout the application to modularize the code
+
+
+### Part 2
 
 1. Implement the request handlers in `listings.server.controller.js`
     - test your implementation by running the tests found in `listings.server.routes.test.js`
 2. Complete the app configuration in `express.js`. 
     - serve the static files found in the public folder when a user makes a request to the path `/`. [Refer to this documentation](http://expressjs.com/en/starter/static-files.html) for help
-    - use the listings router for requests going to the `/api` path 
+    - use the listings router for requests going to the `/api/listings` path 
     - direct users to the client side `index.html` file for requests to any other path
 3. Make sure your server is functioning correctly by starting it up by running the command `node server.js`
 4. Make a pull request once you have completed the assignment. 
+

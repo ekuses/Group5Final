@@ -3,15 +3,11 @@
 //copy this file's contents to another file 'config.js' and store your MongoLab uri there
 
 module.exports = {
-  test: {
-    db: {
-      uri: ''
-    }
+  db: {
+    uri: '', //place the URI of your mongo database here.
   }, 
-  dev: {
-    db: {
-      uri: '', //place the URI of your mongo database here.
-    } 
-  }, 
+  googleMaps: {
+    key: ''
+  },
   port: 8080
 };

@@ -1,5 +1,6 @@
 /* Dependencies */
 var listings = require('../controllers/listings.server.controller.js'), 
+    getCoordinates = require('../controllers/coordinates.server.controller.js'),
     express = require('express'), 
     router = express.Router();
 
@@ -7,16 +8,16 @@ var listings = require('../controllers/listings.server.controller.js'),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.route('/listings')
+router.route('/')
   .get(listings.list)
-  .post(listings.create);
+  .post(getCoordinates, listings.create);
 
 /*
   The ':' specifies a URL parameter. 
  */
-router.route('/listings/:listingId')
+router.route('/:listingId')
   .get(listings.read)
-  .put(listings.update)
+  .put(getCoordinates, listings.update)
   .delete(listings.delete);
 
 /*
