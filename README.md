@@ -97,5 +97,4 @@ Create a diagram of how the different parts of the server interact with one anot
     - use the listings router for requests going to the `/api/listings` path 
     - direct users to the client side `index.html` file for requests to any other path
 3. Make sure your server is functioning correctly by starting it up by running the command `node server.js`
-4. Make a pull request once you have completed the assignment. 
 
