@@ -1,9 +1,11 @@
+# NOT OFFICIALLY RELEASED
+
 # Creating a server-side CRUD module using Express
-In assignment 1, we created a simple node server that retrieved our listings by responding to GET requests to '/listings'. You are now going to add more functionality to this server that allows us to **create**, **read**, **update**, and **delete** listings from a Mongo database. These tasks are commonly referred to as CRUD. 
+In Bootcamp Assignment #1, we created a simple node server that retrieved our listings by responding to GET requests to '/listings'. You are now going to add more functionality to this server that allows us to **create**, **read**, **update**, and **delete** listings from a Mongo database. These tasks are commonly referred to as CRUD. 
 
 ## Introduction to Express
 
-While these new requests could be handled in the same fashion as the original request handler, it would quickly become unweildly. There would need to be a bunch of conditional statements to handle requests to the different URL paths and different HTTP methods (such as POST, PUT, and DELETE). Luckily, the [**Express**](http://expressjs.com/en/index.html) library makes this task much simpler by providing a layer of abstraction for handling HTTP requests in a Node server. 
+While these new requests could be handled in the same fashion as the original request handler, it would quickly become unweildly. There would need to be many conditional statements to handle requests to the different URL paths and different HTTP methods (such as POST, PUT, and DELETE). Luckily, the [**Express**](http://expressjs.com/en/index.html) library makes this task much simpler by providing a layer of abstraction for handling HTTP requests in a Node server. 
 
 To provide an example, here is the request handler we wrote in assignment 1:
 
@@ -81,14 +83,8 @@ Navigate to `server/config/express.js`. This is where you will place code to con
 
 In `server/routes/listings.server.routes.js`, you will find code that specifies the request handlers for CRUD tasks. To learn more about the Express router, [go to this page](http://expressjs.com/en/guide/routing.html) and scroll down to the section on *express.Router.*
 
-### Part 1
-Create a diagram of how the different parts of the server interact with one another. Specifially make note of: 
-   - what is defined in the controllers
-   - how the router makes use of the controllers to determine the flow of request handling
-   - how middleware is used throughout the application to modularize the code
 
-
-### Part 2
+## Assignment Submission
 
 1. Implement the request handlers in `listings.server.controller.js`
     - test your implementation by running the tests found in `listings.server.routes.test.js`
@@ -96,5 +92,9 @@ Create a diagram of how the different parts of the server interact with one anot
     - serve the static files found in the public folder when a user makes a request to the path `/`. [Refer to this documentation](http://expressjs.com/en/starter/static-files.html) for help
     - use the listings router for requests going to the `/api/listings` path 
     - direct users to the client side `index.html` file for requests to any other path
-3. Make sure your server is functioning correctly by starting it up by running the command `node server.js`
+3. Implement client-side addListing and deleteListing functions in `listingController.js`.
+4. Implement delete function in `listingFactory.js`.
+5. Copy or improve any styling you added in Bootcamp Assignment #2.
+6. Make sure your server is functioning correctly by starting with the command: `node server.js`
+7. Check your user interface: `http://localhost:8080/`.
 
