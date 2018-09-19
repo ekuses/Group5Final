@@ -12,9 +12,6 @@ res.json - http://expressjs.com/en/4x/api.html#res.json
 res.send - http://expressjs.com/en/4x/api.html#res.send
 res.status - http://expressjs.com/en/4x/api.html#res.status
 
-For assignment 5: 
-ngResource - http://jacopretorius.net/2013/04/using-ngresource-with-angularjs.html
-
 
 Services vs factories 
 http://tylermcginnis.com/angularjs-factory-vs-service-vs-provider/

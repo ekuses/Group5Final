@@ -4,8 +4,7 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes'), 
-    getCoordinates = require('../controllers/coordinates.server.controller.js');
+    listingsRouter = require('../routes/listings.server.routes');
 
 module.exports.init = function() {
   //connect to database
@@ -20,18 +19,17 @@ module.exports.init = function() {
   //body parsing middleware 
   app.use(bodyParser.json());
 
-  /* server wrapper around Google Maps API to get latitude + longitude coordinates from address */
-  app.post('/api/coordinates', getCoordinates, function(req, res) {
-    res.send(req.results);
-  });
-
-  /* serve static files */
+  
+  /**TODO
+  Serve static files */
   
 
-  /* use the listings router for requests to the api */
+  /**TODO 
+  Use the listings router for requests to the api */
 
 
-  /* go to homepage for all routes not specified */ 
+  /**TODO 
+  Go to homepage for all routes not specified */ 
 
   return app;
 };  

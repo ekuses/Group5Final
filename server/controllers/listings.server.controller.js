@@ -18,13 +18,6 @@ exports.create = function(req, res) {
   /* Instantiate a Listing */
   var listing = new Listing(req.body);
 
-  /* save the coordinates (located in req.results if there is an address property) */
-  if(req.results) {
-    listing.coordinates = {
-      latitude: req.results.lat, 
-      longitude: req.results.lng
-    };
-  }
 
   /* Then save the listing */
   listing.save(function(err) {
@@ -47,8 +40,8 @@ exports.read = function(req, res) {
 exports.update = function(req, res) {
   var listing = req.listing;
 
+  /** TODO **/
   /* Replace the article's properties with the new properties found in req.body */
-  /* save the coordinates (located in req.results if there is an address property) */
   /* Save the article */
 };
 
@@ -56,18 +49,20 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) {
   var listing = req.listing;
 
+  /** TODO **/
   /* Remove the article */
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
 exports.list = function(req, res) {
+  /** TODO **/
   /* Your code here */
 };
 
 /* 
   Middleware: find a listing by its ID, then pass it to the next request handler. 
 
-  HINT: Find the listing using a mongoose query, 
+  Find the listing using a mongoose query, 
         bind it to the request object as the property 'listing', 
         then finally call next
  */
