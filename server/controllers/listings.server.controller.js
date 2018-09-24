@@ -15,9 +15,8 @@ var mongoose = require('mongoose'),
 /* Create a listing */
 exports.create = function(req, res) {
 
-  /* Instantiate a Listing */
-  var listing = new Listing(req.body);
-
+    /* Instantiate a Listing */
+    var listing = new Listing(req.body);
 
   /* Then save the listing */
   listing.save(function(err) {
@@ -37,42 +36,70 @@ exports.read = function(req, res) {
 };
 
 /* Update a listing */
-exports.update = function(req, res) {
-  var listing = req.listing;
-
-  /** TODO **/
-  /* Replace the article's properties with the new properties found in req.body */
-  /* Save the article */
+exports.update = function (req, res) {
+    var listing = req.listing;
+    /** TODO **/
+    /* Replace the article's properties with the new properties found in req.body */
+    /* Save the article */
+    Listing.findOneAndUpdate({ code: listing.code }, req.body, { new: true }, function (err, listing) {
+        if (err) {
+            res.status(404).send('Error: File not found');
+            console.log(err);
+        }
+        else {
+            res.json(listing);
+        }
+    });
 };
 
 /* Delete a listing */
-exports.delete = function(req, res) {
-  var listing = req.listing;
+  exports.delete = function (req, res) {
+      var listing = req.listing;
+      /** TODO **/
+      /* Remove the article */
+      Listing.findOneAndRemove({ _id: listing._id }, function (err) {
+          if (err) {
+              console.log(err);
+              res.status(404).send(err);
+          }
+          else res.json(listing);
+      })
+  };
 
-  /** TODO **/
-  /* Remove the article */
-};
+    /* Retreive all the directory listings, sorted alphabetically by listing code */
+    exports.list = function (req, res) {
+        /** TODO **/
+        /* Your code here */
+        Listing.find({}, function (err, listings) {
+            if (err) {
+                res.status(404).send('Error: Could not retrieve listings');
+                console.log(err);
+            }
+            else {
+                listings.sort(function (a, b) {
+                    if (a.code.toLowerCase() < b.code.toLowerCase()) return -1;
+                    if (a.code.toLowerCase() > b.code.toLowerCase()) return 1;
+                    return 0;
+                });
+                res.json(listings);
+         }
+        });
+    };
 
-/* Retreive all the directory listings, sorted alphabetically by listing code */
-exports.list = function(req, res) {
-  /** TODO **/
-  /* Your code here */
-};
-
-/* 
-  Middleware: find a listing by its ID, then pass it to the next request handler. 
-
-  Find the listing using a mongoose query, 
-        bind it to the request object as the property 'listing', 
-        then finally call next
- */
-exports.listingByID = function(req, res, next, id) {
-  Listing.findById(id).exec(function(err, listing) {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      req.listing = listing;
-      next();
-    }
-  });
-};
+    /* 
+      Middleware: find a listing by its ID, then pass it to the next request handler. 
+    
+      Find the listing using a mongoose query, 
+            bind it to the request object as the property 'listing', 
+            then finally call next
+     */
+    exports.listingByID = function (req, res, next, id) {
+        Listing.findById(id).exec(function (err, listing) {
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                req.listing = listing;
+                next();
+            }
+        });
+    };
