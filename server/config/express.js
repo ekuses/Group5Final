@@ -35,6 +35,5 @@ module.exports.init = function() {
   app.get('/*', function (req, res) {
       res.redirect('/');
   });
-
   return app;
 };  
