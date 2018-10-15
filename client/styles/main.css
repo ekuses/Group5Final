@@ -58,3 +58,8 @@ form {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 18px;
 }
+.Information {
+	width: 70%;
+	height: 200px;
+	background-color: grey;
+}
