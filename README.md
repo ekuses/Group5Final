@@ -1,6 +1,7 @@
 ```diff
 - # Bug fix: There was a missing comma on line 5 of client/js/factories/listingFactory.js
 ```
+i can edit
 
 # Creating a server-side CRUD module using Express
 In Bootcamp Assignment #1, we created a simple node server that retrieved our listings by responding to GET requests to '/listings'. You are now going to add more functionality to this server that allows us to **create**, **read**, **update**, and **delete** listings from a Mongo database. These tasks are commonly referred to as CRUD. 
