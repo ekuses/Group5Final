@@ -27,12 +27,15 @@
       </div>
  <div class="col-xs-offset-9 col-xs-3">
               <table class="table table-striped table-hover">
+              <tbody style="display:none">
               <tr>
                 <th>Movie</th>
                 <th>Ratings</th>
                 <th>Times</th>
                 <th>Theatre</th>
               </tr>
+          </tbody>
+    <!-- Change the query to the new database stuff--> 
               <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails($index)">
                 <td>{{listing.code}}</td>
                 <td>{{listing.name}}</td>
