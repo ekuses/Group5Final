@@ -10,12 +10,13 @@
         <h1>Crowdy</h1>
       </div>
       <div class="row" ng-controller="ListingsController">
+         <button class="btn btn-primary" ng-click="list()">Display all times</button>
+
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control" placeholder="Search" ng-model="query">
           </div>
-
             <form novalidate class=" = "simple-form">
                 <img src="https://img.swamprentals.com/uploads/radimages/gainesville-map-700x481.jpg" />
             </form>
@@ -26,8 +27,8 @@
         </div>
       </div>
  <div class="col-xs-offset-9 col-xs-3">
-              <table class="table table-striped table-hover">
-              <tbody style="display:none">
+              <table class="table table-striped table-hover" id="table2" style="display:none">
+              <tbody>
               <tr>
                 <th>Movie</th>
                 <th>Ratings</th>

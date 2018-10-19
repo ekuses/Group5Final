@@ -9,6 +9,17 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.detailedInfo = undefined;
 
+    var hide = true;
+    $scope.list = function(){
+      if(!hide){
+        hide = true;
+        document.getElementById('table2').style.display = 'none';
+       }else{
+          hide = false;
+          document.getElementById('table2').style.display = 'block';
+       }
+    };
+
     $scope.addListing = function() {
 	  /**TODO 
 	  *Save the article using the Listings factory. If the object is successfully 

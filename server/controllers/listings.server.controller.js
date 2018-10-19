@@ -65,11 +65,9 @@ exports.update = function (req, res) {
           else res.json(listing);
       })
   };
-
     /* Retreive all the directory listings, sorted alphabetically by listing code */
     exports.list = function (req, res) {
-        /** TODO **/
-        /* Your code here */
+      
         Listing.find({}, function (err, listings) {
             if (err) {
                 res.status(404).send('Error: Could not retrieve listings');
