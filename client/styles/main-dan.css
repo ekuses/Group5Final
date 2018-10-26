@@ -4,12 +4,13 @@ html, body, .container {
   margin: 0;
   padding: 0;
 }
-body{
-  /* background-image: -webkit-linear-gradient(300deg, #fccb90 0%, #d57eeb 100%);
-  background-image: -o-linear-gradient(300deg, #fccb90 0%, #d57eeb 100%);
-  background-image: linear-gradient(30deg, #fccb90 0%, #d57eeb 100%); */
 
+.movies li{
+  text-transform: uppercase;
+  display: block;
 }
+.movies img{}
+
 
 .map {
   height: 100%;
@@ -38,15 +39,17 @@ body{
   grid-area: footer;
 }
 .movie-container {
-  display: flex;
-  flex-direction: column;
   grid-area: movies;
-  border-color: #fff;
-  border-radius: 2px;
-  border: 2px;
+  overflow: auto;
+  display: block;
+  background: #CCC;
+  border: 5px;
+  border-radius: 5px;
+  border-color: #666;
+  border-style: solid;
 }
 .movies{
-  border: 1px solid #000;
+
 }
 .show-times{
   margin-bottom: 2em;
