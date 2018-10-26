@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main-dan.css">
   </head>
 
 
@@ -13,21 +13,30 @@
       <div class="container">
         <div class="header">
           <h1>Crowdy</h1>
+          <button class=" button sec check-in">Check in</button>
+          <button class=" button sec sign-in">sign in</button>
+          <button class=" button sec create-account">create an account</button>
             <div>
               <div class="input-group" id="searchBar">
                 <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
                 <input type="text" class="form-control" placeholder="Search" ng-model="query">
               </div>
-              <button>Check in</button>
             </div>
         </div>
-        <div id="map" class="map"> Map</div>
-        <div class="movies">
-          <button>Show all times</button>
+        <div id="map" class="map"></div>
+        <div class="movie-container">
+          <button class="button sec">Show all times</button>
+          <ul class="movies">
+            <li>Movie 1</li>
+            <li>Movie 2</li>
+            <li>Movie 3</li>
+            <li>Movie 4</li>
+            <li>Movie 5</li>
+          </ul>
 
         </div>
         <div class="footer">
-          <button>feedback</button>
+          <button class = "button sec" >feedback</button>
         </div>
       </div>
 
