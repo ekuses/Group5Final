@@ -13,9 +13,9 @@
       <div class="container">
         <div class="header">
           <h1>Crowdy</h1>
-          <button class=" button sec check-in">Check in</button>
-          <button class=" button sec sign-in">sign in</button>
-          <button class=" button sec create-account">create an account</button>
+          <button class=" button sec">Check in</button>
+          <button class=" button sec">sign in</button>
+          <button class=" button sec">create an account</button>
             <div>
               <div class="input-group" id="searchBar">
                 <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
@@ -27,11 +27,26 @@
         <div class="movie-container">
           <ul class="movies">
             <!-- I feel this should be imported from some sort of database? -->
-            <li><img src="images/A-Star-Is-Born.jpg" alt="A star is born poster art">A star is born</li>
-            <li><img src="images/Halloween.jpg" alt="Halloween poster art">Halloween</li>
-            <li><img src="images/Venom.jpg" alt="Venom poster art">Venom</li>
-            <li><img src="images/First-man.jpg" alt="First Man poster art">First man</li>
-            <li><img src="images/Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody poster art">Bohemian Rhapsody</li>
+            <li>
+              <p>A star is born</p>
+              <img src="images/A-Star-Is-Born.jpg" alt="A star is born poster art">
+            </li>
+            <li>
+              <p>Halloween</p>
+              <img src="images/Halloween.jpg" alt="Halloween poster art">
+            </li>
+            <li>
+              <p>Venom</p>
+              <img src="images/Venom.jpg" alt="Venom poster art">
+            </li>
+            <li>
+              <p>First man</p>
+              <img src="images/First-man.jpg" alt="First Man poster art">
+            </li>
+            <li>
+              <p>Bohemian Rhapsody</p>
+              <img src="images/Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody poster art">
+            </li>
           </ul>
         </div>
         <div class="footer">
@@ -39,49 +54,7 @@
           <button class="button sec">Show all times</button>
         </div>
       </div>
-
-
-      <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: myLatLng
-        });
-
-        setMarkers(map);
-      }
-
-      var theaters = [
-        ['Regal Butler Town Center 14', 29.6272, -82.3772, 3],
-        ['Regal Celebration Pointe 10 & RPX', 29.6237, -82.3953, 2],
-        ['Regal Cinemas Royal Park 16', 29.6539, -82.3802, 1]
-      ];
-      var myLatLng = {lat: 29.6436, lng: -82.3749};
-
-      function setMarkers(map) {
-
-        var image = {
-          url: 'images/popcorn.svg'
-        };
-        for (var i = 0; i < theaters.length; i++) {
-          var theater = theaters[i];
-          var marker = new google.maps.Marker({
-            position: {lat: theater[1], lng: theater[2]},
-            map: map,
-            // icon: image,
-            title: theater[0],
-            zIndex: theater[3]
-          });
-          // var infowindow = new google.maps.InfoWindow({
-          //   content: theater[0]
-          // });
-          // marker.addListener('click', function(){
-          //   infowindow.open(map, marker);
-          // });
-        }
-      }
-
-    </script>
+    <script src="js/maps.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQZhMHSjlgZ1GlA_EPlOp-7DWSInsWU&callback=initMap"></script>
   </body>
 </html>

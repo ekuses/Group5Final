@@ -7,9 +7,14 @@ html, body, .container {
 
 .movies li{
   text-transform: uppercase;
-  display: block;
+  list-style: none;
+
 }
-.movies img{}
+.movies{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 .map {
@@ -29,7 +34,6 @@ html, body, .container {
 
 .header, .footer, .movie-container {
   padding: 1em;
-  background-opacit
 }
 .header{
   grid-area: header;
@@ -47,9 +51,6 @@ html, body, .container {
   border-radius: 5px;
   border-color: #666;
   border-style: solid;
-}
-.movies{
-
 }
 .show-times{
   margin-bottom: 2em;
