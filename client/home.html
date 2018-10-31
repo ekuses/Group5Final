@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Crowdy</title>
+    <title>Home | Crowdy</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main-dan.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
   </head>
-
 
     <body>
       <div class="container">
@@ -25,36 +26,25 @@
         </div>
         <div id="map" class="map"></div>
         <div class="movie-container">
-          <ul class="movies">
-            <!-- I feel this should be imported from some sort of database? -->
-            <li>
-              <p>A star is born</p>
-              <img src="images/A-Star-Is-Born.jpg" alt="A star is born poster art">
-            </li>
-            <li>
-              <p>Halloween</p>
-              <img src="images/Halloween.jpg" alt="Halloween poster art">
-            </li>
-            <li>
-              <p>Venom</p>
-              <img src="images/Venom.jpg" alt="Venom poster art">
-            </li>
-            <li>
-              <p>First man</p>
-              <img src="images/First-man.jpg" alt="First Man poster art">
-            </li>
-            <li>
-              <p>Bohemian Rhapsody</p>
-              <img src="images/Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody poster art">
+          <ul id="movie-app" class="movies">
+            <li v-for="movie in movies">
+              <img :src="movie.image.url" :alt="movie.image.alt" />
+              {{ movie.name }}
             </li>
           </ul>
+        </div>
+        <div class="movie-info">
+          <p>MOVIE INFO HERE</p>
         </div>
         <div class="footer">
           <button class = "button sec" >feedback</button>
           <button class="button sec">Show all times</button>
         </div>
       </div>
+
     <script src="js/maps.js"></script>
+    <script src="js/vue.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQZhMHSjlgZ1GlA_EPlOp-7DWSInsWU&callback=initMap"></script>
+
   </body>
 </html>

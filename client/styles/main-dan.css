@@ -7,13 +7,16 @@ html, body, .container {
 
 .movies li{
   text-transform: uppercase;
-  list-style: none;
+  list-style-type: none;
+  padding: 1rem;
+
 
 }
 .movies{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: auto;
 }
 
 
@@ -25,10 +28,11 @@ html, body, .container {
 
 .container {
   display: grid;
-  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-rows: 1fr 5fr 5fr 1fr;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:  "header header"
                         "movies map"
+                        "info   map"
                         "footer footer";
 }
 
@@ -43,14 +47,21 @@ html, body, .container {
   grid-area: footer;
 }
 .movie-container {
-  grid-area: movies;
   overflow: auto;
-  display: block;
+  grid-area: movies;
+  display: flex;
+  flex-direction: column;
   background: #CCC;
   border: 5px;
   border-radius: 5px;
   border-color: #666;
   border-style: solid;
+}
+.movie-info {
+  grid-area: info;
+  display: block;
+  background: #DDD;
+  flex-grow: 1;
 }
 .show-times{
   margin-bottom: 2em;
