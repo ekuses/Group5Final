@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main-dan.css">
+    <link rel="stylesheet" href="styles/main-dan.nested.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
   </head>
 
@@ -29,7 +29,7 @@
           <ul id="movie-app" class="movies">
             <li v-for="movie in movies">
               <img :src="movie.image.url" :alt="movie.image.alt" />
-              {{ movie.name }}
+              <p> {{ movie.name }} </p>
             </li>
           </ul>
         </div>

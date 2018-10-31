@@ -4,19 +4,17 @@ html, body, .container {
   margin: 0;
   padding: 0;
 }
-
-.movies li{
-  text-transform: uppercase;
-  list-style-type: none;
-  padding: 1rem;
-
-
-}
 .movies{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   overflow: auto;
+
+  li {
+    text-transform: uppercase;
+    list-style-type: none;
+    padding: 1rem;
+  }
 }
 
 
@@ -35,8 +33,7 @@ html, body, .container {
                         "info   map"
                         "footer footer";
 }
-
-.header, .footer, .movie-container {
+.header, .footer{
   padding: 1em;
 }
 .header{
