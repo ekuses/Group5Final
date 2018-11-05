@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Home | Crowdy</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main-dan.nested.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+  </head>
+
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>Crowdy</h1>
+          <button class=" button sec">Check in</button>
+          <button class=" button sec">sign in</button>
+          <button class=" button sec">create an account</button>
+            <div>
+              <div class="input-group" id="searchBar">
+                <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" class="form-control" placeholder="Search" ng-model="query">
+              </div>
+            </div>
+        </div>
+        <div id="map" class="map"></div>
+        <div class="movie-container">
+          <ul id="movie-app" class="movies">
+            <li v-for="movie in movies">
+              <img :src="movie.image.url" :alt="movie.image.alt" />
+              <p> {{ movie.name }} </p>
+            </li>
+          </ul>
+        </div>
+        <div class="movie-info">
+          <p>MOVIE INFO HERE</p>
+        </div>
+        <div class="footer">
+          <button class = "button sec" >feedback</button>
+          <button class="button sec">Show all times</button>
+        </div>
+      </div>
+
+    <script src="js/maps.js"></script>
+    <script src="js/vue.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQZhMHSjlgZ1GlA_EPlOp-7DWSInsWU&callback=initMap"></script>
+
+  </body>
+</html>
