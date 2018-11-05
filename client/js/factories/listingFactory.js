@@ -1,5 +1,6 @@
 angular.module('listings', []).factory('Listings', function($http) {
-  var methods = {
+  
+    var methods = {
     getAll: function() {
         //return $http.get('http://localhost:8080/api/listings');
         return $http.get('https://bootcampsilianhu.herokuapp.com/api/listings');
@@ -11,9 +12,9 @@ angular.module('listings', []).factory('Listings', function($http) {
     }, 
 
 	delete: function(id) {
-	    /**TODO
-         return result of HTTP delete method
-        */
+	    //TODO
+         //return result of HTTP delete method
+        //
 	    console.log('debug1');
 	    console.log(id.code);
 	    //return $http({ method: 'DELETE', url: 'http://localhost:8080/api/listings/' + id._id , data: id});
@@ -21,6 +22,6 @@ angular.module('listings', []).factory('Listings', function($http) {
 	    return $http.delete('https://bootcampsilianhu.herokuapp.com/api/listings/' + id._id, id);
     }
   };
-
+    
   return methods;
 });
