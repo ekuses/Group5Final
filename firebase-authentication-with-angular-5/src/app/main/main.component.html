@@ -4,13 +4,14 @@
     <title>Crowdy</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+
   </head>
 
 
     <body>
       <div class="container">
-        <div class="header">
-          <h1>Crowdy</h1>
+        <div class="header" >
+          <h1 [hidden] = 0>Crowdy</h1>
           <button class=" button sec">Check in</button>
           <button class=" button sec">sign in</button>
           <button class=" button sec">create an account</button>
@@ -24,18 +25,8 @@
         <div id="map" class="map"></div>
         <div class="movie-container">
           <ul class="movies">
-            <li *ngFor="let movie of moviesDb | async">
-              {{ movie.name }}
-              {{ movie.time }}
-              {{ass}}
-            </li>
-          </ul>
-          <br>
-          <ul class="movies">
-            <li *ngFor="let theater of theaterDb | async">
-              {{ theater.name }}
-              {{ theater.ass }}
-            </li>
+            <!-- I feel this should be imported from some sort of database? -->
+
           </ul>
         </div>
         <div class="footer">
@@ -43,5 +34,8 @@
           <button class="button sec">Show all times</button>
         </div>
       </div>
-</body>
+
+
+
+  </body>
 </html>

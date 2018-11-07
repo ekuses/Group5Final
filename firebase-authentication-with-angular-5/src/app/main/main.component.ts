@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -18,17 +19,13 @@ export class MainComponent implements OnInit {
 
       theaterDb: Observable<any[]>;
   constructor(db: AngularFirestore) {
-    this.ass = 0;
+
     this.moviesDb = db.collection('movies').valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
   }
 
 
 
-  setAss() {
-    this.ass = 1000000;
-    }
 
-  }
 
 }
