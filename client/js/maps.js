@@ -1,38 +1,35 @@
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: myLatLng
-  });
-
-  setMarkers(map);
-}
-
-var theaters = [
+var locations = [
   ['Regal Butler Town Center 14', 29.6272, -82.3772, 3],
   ['Regal Celebration Pointe 10 & RPX', 29.6237, -82.3953, 2],
   ['Regal Cinemas Royal Park 16', 29.6539, -82.3802, 1]
 ];
 var myLatLng = {lat: 29.6436, lng: -82.3749};
 
-function setMarkers(map) {
+//make the map
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: myLatLng
+  });
+  setMarkers(map, locations);
+}
+function setMarkers(map, locations){
+  for(var i = 0; i < locations.length; i++){
+    var marker = locations[i];
+    var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+    var content = locations[i][0];
+    var infowindow = new google.maps.InfoWindow();
 
-  var image = {
-    url: 'images/popcorn.svg'
-  };
-  for (var i = 0; i < theaters.length; i++) {
-    var theater = theaters[i];
-    var marker = new google.maps.Marker({
-      position: {lat: theater[1], lng: theater[2]},
-      map: map,
-      // icon: image,
-      title: theater[0],
-      zIndex: theater[3]
+    marker = new google.maps.Marker({
+      position:latLng,
+      map: map
     });
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: theater[0]
-    // });
-    // marker.addListener('click', function(){
-    //   infowindow.open(map, marker);
-    // });
+
+    google.maps.event.addListener(marker, 'click', function(content){
+      return function(){
+        infowindow.setContent(content);
+        infowindow.open(map, this);
+      }
+    }(content));
   }
 }
