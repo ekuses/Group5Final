@@ -53,6 +53,10 @@
   color: #C8404C;
   text-decoration: none;
 }
+.form .login a{
+  text-decoration: none;
+  color:inherit;
+}
 .form .register-form {
   display: none;
 }
