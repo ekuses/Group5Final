@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crowdy</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+  </head>
+
+
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>Crowdy</h1>
+          <button class=" button sec">Check in</button>
+          <button class=" button sec">sign in</button>
+          <button class=" button sec">create an account</button>
+            <div>
+              <div class="input-group" id="searchBar">
+                <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" class="form-control" placeholder="Search" ng-model="query">
+              </div>
+            </div>
+        </div>
+        <div id="map" class="map"></div>
+        <div class="movie-container">
+          <ul class="movies">
+            <li *ngFor="let movie of moviesDb | async">
+              {{ movie.name }}
+              {{ movie.time }}
+            </li>
+          </ul>
+        </div>
+        <div class="footer">
+          <button class = "button sec" >feedback</button>
+          <button class="button sec">Show all times</button>
+        </div>
+      </div>
+</body>
+</html>
