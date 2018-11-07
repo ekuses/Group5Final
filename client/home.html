@@ -6,35 +6,42 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main-dan.nested.css">
+    <link rel="stylesheet" href="styles/main-dan.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
   </head>
 
     <body>
       <div class="container">
         <div class="header">
-          <h1>Crowdy</h1>
+          <img class ="logo" src="images/logo.svg" alt="crowdy logo with popcorn movie glasses and film">
           <button class=" button sec">Check in</button>
-          <button class=" button sec">sign in</button>
-          <button class=" button sec">create an account</button>
-            <div>
-              <div class="input-group" id="searchBar">
-                <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Search" ng-model="query">
-              </div>
-            </div>
+          <button class=" button sec">Log out</button>
+          <div class="display-info">Welcome, User</div>
+          <div class="input-group" id="searchBar">
+            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" placeholder="Search" ng-model="query">
+          </div>
         </div>
         <div id="map" class="map"></div>
         <div class="movie-container">
           <ul id="movie-app" class="movies">
             <li v-for="movie in movies">
               <img :src="movie.image.url" :alt="movie.image.alt" />
-              <p> {{ movie.name }} </p>
+              <h4> <a @click="handleClick()">{{ movie.name }} </a></h4>
             </li>
           </ul>
         </div>
-        <div class="movie-info">
-          <p>MOVIE INFO HERE</p>
+        <div id="movie-shows" class="movie-info">
+          <h2 v-if="notClicked == true">Click a Movie to show times</h2>
+          <div v-else>
+            <h1>IT WORKED</h1>
+            <h4>{{currentName}}</h4>
+            <ul>
+              <li v-for="time in times">
+                {{time}}
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="footer">
           <button class = "button sec" >feedback</button>

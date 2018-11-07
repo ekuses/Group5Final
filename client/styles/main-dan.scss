@@ -28,7 +28,7 @@ html, body, .container {
   display: grid;
   grid-template-rows: 1fr 5fr 5fr 1fr;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas:  "header header"
+  grid-template-areas:  "header map"
                         "movies map"
                         "info   map"
                         "footer footer";
@@ -39,6 +39,9 @@ html, body, .container {
 .header{
   grid-area: header;
   padding: .5em;
+}
+.logo{
+  height: 100px;
 }
 .footer{
   grid-area: footer;

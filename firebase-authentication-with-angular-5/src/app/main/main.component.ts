@@ -22,13 +22,4 @@ export class MainComponent implements OnInit {
     this.moviesDb = db.collection('movies').valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
   }
-
-
-
-  setAss() {
-    this.ass = 1000000;
-    }
-
-  }
-
 }
