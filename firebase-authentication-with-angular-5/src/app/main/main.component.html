@@ -26,12 +26,24 @@
         <div class="movie-container">
           <ul class="movies">
             <!-- I feel this should be imported from some sort of database? -->
-
+            <li *ngFor="let movie of moviesDb | async">
+              {{ movie.name }}
+              {{ movie.time }}
+              {{ass}}
+            </li>
+          </ul>
+          <br>
+          <ul class="movies">
+            <li *ngFor="let theater of theaterDb | async">
+              {{ theater.name }}
+              {{ theater.ass }}
+            </li>
           </ul>
         </div>
         <div class="footer">
           <button class = "button sec" >feedback</button>
-          <button class="button sec">Show all times</button>
+          <button class="button sec" (click)=showTable()>Show all times</button>
+
         </div>
       </div>
 

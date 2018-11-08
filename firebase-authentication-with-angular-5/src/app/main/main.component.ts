@@ -19,8 +19,15 @@ export class MainComponent implements OnInit {
 
       theaterDb: Observable<any[]>;
   constructor(db: AngularFirestore) {
+    tableshow: boolean;
 
     this.moviesDb = db.collection('movies').valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
+  }
+    showTable(){
+    if(this.tableshow)
+      this.tableshow = false;
+    else
+        this.tableshow = true;
   }
 }
