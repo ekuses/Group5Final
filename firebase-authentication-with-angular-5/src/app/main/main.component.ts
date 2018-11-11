@@ -26,21 +26,24 @@ export class MainComponent implements OnInit {
         setMarkers(this.map);
   }
 
-  tableshow: boolean;
+    moviesDb: Observable<any[]>;
+    tableshow:boolean;
 
   moviesDb: Observable<any[]>;
   theaterDb: Observable<any[]>;
   constructor(db: AngularFirestore) {
+    this.tableshow = true;
     this.moviesDb = db.collection('movies').valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
 
   }
     showTable(){
-    if(this.tableshow)
-      this.tableshow = false;
-    else
+      if(this.tableshow){
+        this.tableshow = false;
+      }else{
         this.tableshow = true;
-  }
+        }
+      }
 
   var theaters:string[]
   theaters = [
