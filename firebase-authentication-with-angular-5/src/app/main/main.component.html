@@ -4,14 +4,13 @@
     <title>Crowdy</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-
   </head>
 
 
     <body>
       <div class="container">
-        <div class="header" >
-          <h1 [hidden] = 0>Crowdy</h1>
+        <div class="header">
+          <h1>Crowdy</h1>
           <button class=" button sec">Check in</button>
           <button class=" button sec">sign in</button>
           <button class=" button sec">create an account</button>
@@ -21,11 +20,11 @@
                 <input type="text" class="form-control" placeholder="Search" ng-model="query">
               </div>
             </div>
+
         </div>
         <div id="map" class="map"></div>
         <div class="movie-container">
           <ul class="movies">
-            <!-- I feel this should be imported from some sort of database? -->
             <li *ngFor="let movie of moviesDb | async">
               {{ movie.name }}
               {{ movie.time }}
@@ -39,15 +38,32 @@
               {{ theater.ass }}
             </li>
           </ul>
+        	
+          <div id="txt2"[hidden]="tableshow">
+        	  <table class="table table-striped table-hover" id="table">
+              	  <tbody>
+              		  <tr>
+                		  <th>Movie</th>
+               			  <th>Ratings</th>
+                		  <th>Times</th>
+                		  <th>Theatre</th>
+              		  </tr>
+          		  </tbody>
+              	  <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails($index)">
+                	  <td>{{move.name}}</td>
+                	  <td>{{move.ratings}}</td>
+                	  <td>{{move.time}}</td>
+                	  <td>{{theater.name}}</td>
+              	  </tr>
+              </table>
+          </div>
+
         </div>
+
         <div class="footer">
           <button class = "button sec" >feedback</button>
           <button class="button sec" (click)=showTable()>Show all times</button>
-
         </div>
       </div>
-
-
-
-  </body>
+</body>
 </html>
