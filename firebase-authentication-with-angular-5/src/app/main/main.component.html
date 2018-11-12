@@ -12,12 +12,11 @@
         <div class="header">
           <h1>Crowdy</h1>
           <button class=" button sec" (click)="showHideCheckin()">Check in</button>
-          <button class=" button sec">sign in</button>
-          <button class=" button sec">create an account</button>
+          <button class=" button sec" (click)="logout()"> sign out</button>
             <div>
               <div class="input-group" id="searchBar">
                 <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Search" ng-model="query">
+                <input type="text" class="form-control" placeholder="Search" [value]="Searchquery" >
               </div>
             </div>
 
@@ -28,7 +27,6 @@
             <li *ngFor="let movie of moviesDb | async">
               {{ movie.name }}
               {{ movie.time }}
-              {{ass}}
             </li>
           </ul>
           <br>
@@ -73,7 +71,7 @@
               </select>
               <label for="movie">Movie</label>
               <input type="text" placeholder="Enter Movie Name" name="movie" required />
-              <button type="button" name="closeCheckIn" class="close" (click)="showHideCheckin()"> Check In</button>
+              <button type="button" name="closeCheckIn" class="close" (click)="showHideCheckin()">Check In</button>
           </div>
         </div>
       </div>

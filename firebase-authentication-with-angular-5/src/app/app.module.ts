@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MainComponent } from './main/main.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    NgbModule.forRoot(),
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]

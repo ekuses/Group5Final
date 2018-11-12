@@ -3,6 +3,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { } from '@types/googlemaps';
 import { ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 
 
@@ -31,13 +33,17 @@ export class MainComponent implements OnInit {
         this.setMarkers(this.map);
   }
 
+  logout() {
+  this.afAuth.auth.signOut();
+  location.reload();
+  }
 
 
-
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.tableshow = true;
     this.moviesDb = db.collection('movies').valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
+
 
   }
    public showTable(){
@@ -75,6 +81,7 @@ export class MainComponent implements OnInit {
         this.showCheckin="block";
       }
     }
-    
+
+
 
 }
