@@ -49,17 +49,17 @@ export class MainComponent implements OnInit {
 
     public setMarkers(map) {
       var theaters = [
-        ['Regal Butler Town Center 14', 29.6272, -82.3772, 3],
-        ['Regal Celebration Pointe 10 & RPX', 29.6237, -82.3953, 2],
-        ['Regal Cinemas Royal Park 16', 29.6539, -82.3802, 1]
+        ["Regal Butler Town Center 14", 29.6272, -82.3772, 3],
+        ["Regal Celebration Pointe 10 & RPX", 29.6237, -82.3953, 2],
+        ["Regal Cinemas Royal Park 16", 29.6539, -82.3802, 1]
       ];
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
+        var asshole = theater[0];
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
-          title: theater[0],
-          zIndex: theater[3],
+          title: asshole,
         });
       }
     }
