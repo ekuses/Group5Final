@@ -86,3 +86,32 @@ html, body, .container {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 12px;
+    background-color: #06C4E1;
+    color: white;
+}
+
+.modal-body {
+	padding: 2px 16px;
+}
+
+
+#feedbackform {
+	display: "none";
+}

@@ -97,5 +97,35 @@ export class MainComponent implements OnInit {
     checkInCelebrationf(busyValue){
       this.checkInCelebration.add({ busy:  busyValue  });
     }
+    
+    //zacs modal stuff
+		
+		showfeedback() {
+		  var x = document.getElementById('feedbackform');
+		  x.style.display = "block";
+		}
+		hidefeedback() {
+			var modal = document.getElementById('feedbackform');
+			modal.style.display = "none";
+		}
+		sendfeedback() {
+			var xname = document.getElementById('defaultContactFormName');
+			var xemail = document.getElementById('defaultContactFormEmail');
+			var xtext = document.getElementById('exampleFormControlTextarea2');
+			xname.value = "";
+			xemail.value = "";
+			xtext.value = "";
+			var modal = document.getElementById('feedbackform');
+			modal.style.display = "none";
+		}
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			var modal = document.getElementById('feedbackform');
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	//zacs modal stuff
 
 }
