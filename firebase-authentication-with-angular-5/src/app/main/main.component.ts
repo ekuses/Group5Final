@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
   tableshow:boolean;
   moviesDb: Observable<any[]>;
   theaterDb: Observable<any[]>;
+  showCheckin = false;
 
 
   ngOnInit() {
@@ -62,6 +63,10 @@ export class MainComponent implements OnInit {
           title: tstring,
         });
       }
+    }
+
+    showHideCheckin() {
+      this.showCheckin = !(this.showCheckin);
     }
 
 }

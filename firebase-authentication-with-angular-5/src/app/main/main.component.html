@@ -11,7 +11,7 @@
       <div class="container">
         <div class="header">
           <h1>Crowdy</h1>
-          <button class=" button sec">Check in</button>
+          <button class=" button sec" (click)="showHideCheckin()">Check in</button>
           <button class=" button sec">sign in</button>
           <button class=" button sec">create an account</button>
             <div>
@@ -61,6 +61,20 @@
         <div class="footer">
           <button class = "button sec" >feedback</button>
           <button class="button sec" (click)=showTable()>Show all times</button>
+        </div>
+      </div>
+
+      <div class="modal" id="testPopup" *ngIf="showCheckin">
+        <div class="modal-content">
+
+          <div action=" /action_page.php" class="form-group" >
+              <label for="theatre"> Theatre</label>
+              <input type="text" placeholder="Enter theatre" name="theatre" required />
+              <label for="movie">Movie</label>
+              <input type="text" placeholder="Enter Movie Name" name="movie" required />
+              <button type="button" name="closeCheckIn" class="close" (click)="showHideCheckin()"> Check In</button>
+          </div>
+
         </div>
       </div>
 
