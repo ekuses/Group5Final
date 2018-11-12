@@ -64,17 +64,17 @@
         </div>
       </div>
 
-      <div class="modal" id="testPopup" *ngIf="showCheckin">
+      <div class="modal" id="testPopup" [ngStyle]="{'display':showCheckin}">
         <div class="modal-content">
-
           <div action=" /action_page.php" class="form-group" >
               <label for="theatre"> Theatre</label>
-              <input type="text" placeholder="Enter theatre" name="theatre" required />
+              <select name="theatre">
+                  <option *ngFor="let movie of moviesDb | async" [value]="movie.name">{{movie.name}}</option>
+              </select>
               <label for="movie">Movie</label>
               <input type="text" placeholder="Enter Movie Name" name="movie" required />
               <button type="button" name="closeCheckIn" class="close" (click)="showHideCheckin()"> Check In</button>
           </div>
-
         </div>
       </div>
 
