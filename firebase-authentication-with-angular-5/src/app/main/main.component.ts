@@ -56,7 +56,7 @@ export class MainComponent implements OnInit {
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
         var marker = new google.maps.Marker({
-          position: {lat: theater[1], lng: theater[2]},
+          position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: theater[0],
           zIndex: theater[3]
