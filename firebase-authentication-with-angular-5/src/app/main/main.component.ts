@@ -59,7 +59,7 @@ export class MainComponent implements OnInit {
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: theater[0],
-          zIndex: theater[3]
+          zIndex: theater[3],
         });
       }
     }
