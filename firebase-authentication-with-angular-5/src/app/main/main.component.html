@@ -49,7 +49,7 @@
                 		  <th>Theatre</th>
               		  </tr>
           		  </tbody>
-              	  <tr *ngFor="let movie of moviesDb | async" (click)=[showDetails($index)]>
+              	  <tr *ngFor="let movie of moviesDb | async " (click)=[showDetails($index)]>
                 	  <td>{{movie.name}}</td>
                 	  <td>{{movie.time}}</td>
               	  </tr>

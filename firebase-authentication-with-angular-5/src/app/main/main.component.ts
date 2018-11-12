@@ -68,5 +68,6 @@ export class MainComponent implements OnInit {
     showHideCheckin() {
       this.showCheckin = !(this.showCheckin);
     }
+    
 
 }
