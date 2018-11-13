@@ -3,17 +3,19 @@ html, body, .container {
   width: 100%;
   margin: 0;
   padding: 0;
-}
-
-.movies li{
-  text-transform: uppercase;
-  list-style: none;
-
+  overflow: hidden !important;
 }
 .movies{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  overflow: auto;
+
+  li {
+    text-transform: uppercase;
+    list-style-type: none;
+    padding: 1rem;
+  }
 }
 
 
@@ -25,32 +27,42 @@ html, body, .container {
 
 .container {
   display: grid;
-  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas:  "header header"
+  grid-template-areas:  "header map"
                         "movies map"
+                        "info   map"
                         "footer footer";
 }
-
-.header, .footer, .movie-container {
+.header, .footer{
   padding: 1em;
 }
 .header{
   grid-area: header;
   padding: .5em;
 }
+.logo{
+  height: 100px;
+}
 .footer{
   grid-area: footer;
 }
 .movie-container {
-  grid-area: movies;
   overflow: auto;
-  display: block;
+  grid-area: movies;
+  display: flex;
+  flex-direction: column;
   background: #CCC;
   border: 5px;
   border-radius: 5px;
   border-color: #666;
   border-style: solid;
+}
+.movie-info {
+  grid-area: info;
+  display: block;
+  background: #DDD;
+  flex-grow: 1;
 }
 .show-times{
   margin-bottom: 2em;
@@ -65,6 +77,7 @@ html, body, .container {
 .sec:hover {
   background: #f5f5f5;
 }
+
 
 .modal {
     position: fixed; /* Stay in place */
