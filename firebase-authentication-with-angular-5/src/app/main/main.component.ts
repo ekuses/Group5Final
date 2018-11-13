@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { } from '@types/googlemaps';
 import { ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -8,6 +9,10 @@ import { auth } from 'firebase/app';
 
 
 
+export interface Movie {
+  name: string;
+  time: string;
+}
 
 @Component({
   selector: 'app-main',
@@ -18,13 +23,16 @@ export class MainComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
   tableshow:boolean;
-  moviesDb: Observable<any[]>;
+  moviesDb: Observable<Movie[]>;
   theaterDb: Observable<any[]>;
   showCheckin = "none";
   searchBy = "";
   checkInButler = null;
   checkInCelebration = null;
   checkInRoyalPark = null;
+  moviesRef : AngularFirestoreDocument<{test: string}>;
+  nameFilter$: BehaviorSubject<string|null>;
+  moviesRef2 : AngularFirestoreCollection<Movie>;
 
   ngOnInit() {
     var mapProp = {
@@ -42,14 +50,36 @@ export class MainComponent implements OnInit {
   }
 
 
-  constructor(db: AngularFirestore, public afAuth: AngularFireAuth) {
+  constructor(afs: AngularFirestore, public afAuth: AngularFireAuth){
+    this.nameFilter$ = new BehaviorSubject(null);
     this.tableshow = true;
-    this.moviesDb = db.collection('movies', ref => ref.where('name', '>=', this.searchBy)).valueChanges();
-    this.theaterDb = db.collection('theaters').valueChanges();
-    this.checkInButler = db.collection('theaters/desc/Butler');
-    this.checkInCelebration = db.collection('theaters/desc/Celebration');
-    this.checkInRoyalPark = db.collection('theaters/desc/RoyalPark');
+    //this.moviesDb = db.collection('movies', ref => ref.where('name', '>=', this.searchBy)).valueChanges();
+
+    this.moviesDb = this.nameFilter$.pipe(
+      switchMap((name) =>
+        afs.collection<Movie>('movies', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (name) { query = query.where('name', '>=', name) };
+          return query;
+        }).valueChanges()
+      ));
+
+
+
+
+    this.theaterDb = afs.collection('theaters/').valueChanges();
+    this.checkInButler = afs.collection('theaters/desc/Butler');
+    this.checkInCelebration = afs.collection('theaters/desc/Celebration');
+    this.checkInRoyalPark = afs.collection('theaters/desc/RoyalPark');
+    this.moviesRef = afs.doc('movies/ex');
   }
+
+  filterByName() {
+    this.nameFilter$.next(this.searchBy);
+  }
+
+
+
    public showTable(){
     if(this.tableshow){
       this.tableshow = false;
@@ -57,6 +87,8 @@ export class MainComponent implements OnInit {
       this.tableshow = true;
       }
     }
+
+
 
     public setMarkers(map) {
       var theaters = [
@@ -84,6 +116,10 @@ export class MainComponent implements OnInit {
       {
         this.showCheckin="block";
       }
+    }
+
+    updateMovies(){
+      this.moviesRef.update({test: "1"});
     }
 
     checkInRoyalParkf(busyValue){
