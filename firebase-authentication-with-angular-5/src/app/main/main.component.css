@@ -126,3 +126,8 @@ html, body, .container {
 
 #feedbackform {
   display: "none"; }
+  
+.modal-footer {
+	text-align:center;	
+	margin-top:20px;
+}
