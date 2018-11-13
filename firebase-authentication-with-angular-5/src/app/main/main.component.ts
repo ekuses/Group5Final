@@ -66,7 +66,7 @@ export class MainComponent implements OnInit {
       ];
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
-        var content = theaters[i]; //we can change this to anything including html5
+        var content = String(theater[0]); //we can change this to anything including html5
         var tstring = String(theater[0]);
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
