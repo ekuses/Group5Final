@@ -46,9 +46,9 @@ export class MainComponent implements OnInit {
     this.tableshow = true;
     this.moviesDb = db.collection('movies', ref => ref.where('name', '>=', this.searchBy)).valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
-    this.checkInButler = db.collection('theaters/Butler');
-    this.checkInCelebration = db.collection('theaters/Celebration');
-    this.checkInRoyalPark = db.collection('theaters/RoyalPark');
+    this.checkInButler = db.collection('theaters/desc/Butler');
+    this.checkInCelebration = db.collection('theaters/desc/Celebration');
+    this.checkInRoyalPark = db.collection('theaters/desc/RoyalPark');
   }
    public showTable(){
     if(this.tableshow){
@@ -87,15 +87,15 @@ export class MainComponent implements OnInit {
     }
 
     checkInRoyalParkf(busyValue){
-      this.checkInRoyalPark.add({ name: 'busy', value: busyValue });
+      this.checkInRoyalPark.add({ busy:  busyValue });
     }
 
-    checkInButlerf(){
-      this.checkInButler.add({ name: 'busy', value: busyValue });
+    checkInButlerf(busyValue){
+      this.checkInButler.add({ busy: busyValue });
     }
 
-    checkInCelebrationf(){
-      this.checkInCelebration.add({ 'busy':  busyValue, date:  });
+    checkInCelebrationf(busyValue){
+      this.checkInCelebration.add({ busy:  busyValue  });
     }
 
 }
