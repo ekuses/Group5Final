@@ -133,3 +133,8 @@ html, body, .container {
 	display: "none";
 }
 
+.maprow:after { 
+	content: ""; 
+	display: table; 
+	clear: both; 
+} 

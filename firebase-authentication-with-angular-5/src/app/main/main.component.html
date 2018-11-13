@@ -78,7 +78,7 @@
               <select #theaterOption name="theatre" #theaterChosen>
                   <option *ngFor="let theater of theaterDb | async" [value]="theater.name">{{theater.name}}</option>
               </select>
-              <label for="busyLevel">How busy is it?</label>
+              <label for="busyLevel">How busy this Theatre?</label>
               <select #busyOption class="" name="busy">
                 <option [value]="1">1</option>
                 <option [value]="2">2</option>
