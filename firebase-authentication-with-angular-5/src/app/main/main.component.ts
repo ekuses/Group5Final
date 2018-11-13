@@ -96,42 +96,101 @@ export class MainComponent implements OnInit {
         ["Regal Celebration Pointe 10 & RPX", 29.6237, -82.3953, 2],
         ["Regal Cinemas Royal Park 16", 29.6539, -82.3802, 1]
       ];
+
+
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
+        var content = '<div class="maprow" id="popup" >'+
+					'<div id="c1" style="float: left; width: 70%;">'+
+						'<h2 style="display: inline-block;">'+theater[0]+' ['+theater[4]+']</h2>'+
+						'<p >'+theater[1]+'</p>'+
+						'<p >graph of busy times for this day?</p>'+
+					'</div>'+
+					'<div id="c2" style="float: center; width: 30%; display: inline-block;">'+
+						'<button type="button" class="btn btn-info btn-block" >Check in</button> '+
+						'<button type="button" class="btn btn-info btn-block" >Showtimes</button> '+
+						'<button type="button" class="btn btn-info btn-block" >Navigate</button> '+
+					'</div>'+
+				'</div>' ; //String(theater[0]); //we can change this to anything including html5
         var tstring = String(theater[0]);
+        var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: tstring,
         });
+        google.maps.event.addListener(marker, 'click', function(content){
+          return function(){
+            infowindow.setContent(content);
+            infowindow.open(map, this);
+          }
+        }(content));
       }
     }
 
-    showHideCheckin() {
-      if (this.showCheckin==="block")
-      {
-        this.showCheckin="none";
-      }
-      else
-      {
-        this.showCheckin="block";
-      }
+    checkIn() {
+      this.showCheckin="block";
     }
 
-    updateMovies(){
-      this.moviesRef.update({test: "1"});
+
+
+    hideCheckIn()
+    {
+      this.showCheckin="none";
     }
 
-    checkInRoyalParkf(busyValue){
+    public checkInRoyalParkf(busyValue){
       this.checkInRoyalPark.add({ busy:  busyValue });
     }
 
-    checkInButlerf(busyValue){
+    public checkInButlerf(busyValue){
       this.checkInButler.add({ busy: busyValue });
     }
 
-    checkInCelebrationf(busyValue){
+    public checkInCelebrationf(busyValue){
       this.checkInCelebration.add({ busy:  busyValue  });
     }
+
+    submitCheckin(theatre, busyValue)
+    {
+      this.showCheckin="none";
+      if (theatre.value==="RoyalPark")
+      {
+        //this.checkInRoyalParkf(busyValue.value);
+      }
+      else if (theatre.value==="Butler")
+      {
+        //this.checkInButlerf(busyValue.value);
+      }
+      else if (theatre.value==="Celebration")
+      {
+        //this.checkInCelebrationf(busyValue.value);
+      }
+    }
+
+    //zacs modal stuff
+
+		showfeedback() {
+		  var x = document.getElementById('feedbackform');
+		  x.style.display = "block";
+		}
+		hidefeedback() {
+			var modal = document.getElementById('feedbackform');
+			modal.style.display = "none";
+		}
+		sendfeedback() {
+//			var xname = document.getElementById('defaultContactFormName');
+//			var xemail = document.getElementById('defaultContactFormEmail');
+//			var xtext = document.getElementById('exampleFormControlTextarea2');
+//			xname.setAttribute("value", "");
+//			xemail.setAttribute("value", "");
+//			xtext.setAttribute("value", "");
+			var modal = document.getElementById('feedbackform');
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+
+  //zacs modal stuff
 
 }
