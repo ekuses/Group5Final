@@ -43,16 +43,19 @@
               	  <tbody>
               		  <tr>
                 		  <th>Movie</th>
-               			  <th>Ratings</th>
+               			  <th>Busy</th>
                 		  <th>Times</th>
                 		  <th>Theatre</th>
               		  </tr>
           		  </tbody>
               	  <tr *ngFor="let movie of moviesDb | async " (click)=[showDetails($index)]>
                 	  <td>{{movie.name}}</td>
+                    <td>{{movie.busyValue}}</td>
                 	  <td>{{movie.time}}</td>
+                    <td>{{movie.theater}}</td>
               	  </tr>
               </table>
+              <a (click)="showTable()">Hide</a>
           </div>
 
         </div>
