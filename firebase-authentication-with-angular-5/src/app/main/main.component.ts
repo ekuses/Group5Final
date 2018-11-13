@@ -21,7 +21,10 @@ export class MainComponent implements OnInit {
   moviesDb: Observable<any[]>;
   theaterDb: Observable<any[]>;
   showCheckin = "none";
-
+  searchBy = "";
+  checkInButler = null;
+  checkInCelebration = null;
+  checkInRoyalPark = null;
 
   ngOnInit() {
     var mapProp = {
@@ -41,10 +44,11 @@ export class MainComponent implements OnInit {
 
   constructor(db: AngularFirestore, public afAuth: AngularFireAuth) {
     this.tableshow = true;
-    this.moviesDb = db.collection('movies').valueChanges();
+    this.moviesDb = db.collection('movies', ref => ref.where('name', '>=', this.searchBy)).valueChanges();
     this.theaterDb = db.collection('theaters').valueChanges();
-
-
+    this.checkInButler = db.collection('theaters/Butler');
+    this.checkInCelebration = db.collection('theaters/Celebration');
+    this.checkInRoyalPark = db.collection('theaters/RoyalPark');
   }
    public showTable(){
     if(this.tableshow){
@@ -82,6 +86,16 @@ export class MainComponent implements OnInit {
       }
     }
 
+    checkInRoyalParkf(busyValue){
+      this.checkInRoyalPark.add({ name: 'busy', value: busyValue });
+    }
 
+    checkInButlerf(){
+      this.checkInButler.add({ name: 'busy', value: busyValue });
+    }
+
+    checkInCelebrationf(){
+      this.checkInCelebration.add({ 'busy':  busyValue, date:  });
+    }
 
 }
