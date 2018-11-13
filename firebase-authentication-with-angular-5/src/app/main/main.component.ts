@@ -126,20 +126,24 @@ export class MainComponent implements OnInit {
 			var xname = document.getElementById('defaultContactFormName');
 			var xemail = document.getElementById('defaultContactFormEmail');
 			var xtext = document.getElementById('exampleFormControlTextarea2');
-			xname.value = "";
-			xemail.value = "";
-			xtext.value = "";
+			//xname.value = "";
+			//xemail.value = "";
+			//xtext.value = "";
 			var modal = document.getElementById('feedbackform');
 			modal.style.display = "none";
 		}
 
 		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			var modal = document.getElementById('feedbackform');
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	//zacs modal stuff
+/**
+  ******************FIX THIS FUNCTION SOMHOW AND ABOVE COMMENTED CODE**********
+  *  window.onclick = function(event) {
+	*		var modal = document.getElementById('feedbackform');
+	*		if (event.target == modal) {
+	*			modal.style.display = "none";
+	*		}
+	*	}
+  */
+
+  //zacs modal stuff
 
 }
