@@ -75,31 +75,45 @@ export class MainComponent implements OnInit {
       }
     }
 
-    showHideCheckin() {
-      if (this.showCheckin==="block")
-      {
-        this.showCheckin="none";
-      }
-      else
-      {
-        this.showCheckin="block";
-      }
+    checkIn() {
+      this.showCheckin="block";
     }
 
-    checkInRoyalParkf(busyValue){
+    hideCheckIn()
+    {
+      this.showCheckin="none";
+    }
+    public checkInRoyalParkf(busyValue){
       this.checkInRoyalPark.add({ busy:  busyValue });
     }
 
-    checkInButlerf(busyValue){
+    public checkInButlerf(busyValue){
       this.checkInButler.add({ busy: busyValue });
     }
 
-    checkInCelebrationf(busyValue){
+    public checkInCelebrationf(busyValue){
       this.checkInCelebration.add({ busy:  busyValue  });
     }
-    
+
+    submitCheckin(theatre, busyValue)
+    {
+      this.showCheckin="none";
+      if (theatre.value==="RoyalPark")
+      {
+        //this.checkInRoyalParkf(busyValue.value);
+      }
+      else if (theatre.value==="Butler")
+      {
+        //this.checkInButlerf(busyValue.value);
+      }
+      else if (theatre.value==="Celebration")
+      {
+        //this.checkInCelebrationf(busyValue.value);
+      }
+    }
+
     //zacs modal stuff
-		
+
 		showfeedback() {
 		  var x = document.getElementById('feedbackform');
 		  x.style.display = "block";
@@ -118,7 +132,7 @@ export class MainComponent implements OnInit {
 			var modal = document.getElementById('feedbackform');
 			modal.style.display = "none";
 		}
-		
+
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
 			var modal = document.getElementById('feedbackform');

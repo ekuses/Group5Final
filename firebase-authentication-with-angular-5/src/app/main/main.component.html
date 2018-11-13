@@ -11,7 +11,7 @@
       <div class="container">
         <div class="header">
           <h1>Crowdy</h1>
-          <button class=" btn btn-info" (click)="showHideCheckin()">Check in</button>
+          <button class=" btn btn-info" (click)="checkIn()">Check in</button>
           <button class=" btn btn-info" (click)="logout()"> sign out</button>
           <br>
             <div>
@@ -66,27 +66,33 @@
       <div class="modal" id="testPopup" [ngStyle]="{'display':showCheckin}">
        <div class="modal-content">
 		<div class="modal-header">
-		  <span class="close" (click)="showHideCheckin()" >&times;</span>
+		  <span class="close" (click)="hideCheckIn()" >&times;</span>
 		  <h2>Check in with Crowdy!</h2>
 		</div>
 		<div class="modal-body">
           <div action=" /action_page.php" class="form-group" >
               <br><label for="theatre"> Theatre</label>
-              <select name="theatre">
-                  <option *ngFor="let movie of moviesDb | async" [value]="movie.name">{{movie.name}}</option>
+              <select #theaterOption name="theatre" #theaterChosen>
+                  <option *ngFor="let theater of theaterDb | async" [value]="theater.name">{{theater.name}}</option>
               </select>
-              <label for="movie">Movie</label>
-              <input type="text" placeholder="Enter Movie Name" name="movie" required />
+              <label for="busyLevel">How busy is it?</label>
+              <select #busyOption class="" name="busy">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+                <option [value]="3">3</option>
+                <option [value]="4">4</option>
+                <option [value]="5">5</option>
+              </select>
           </div>
 		</div>
 			<!-- Send button -->
-		  <button type="button" name="closeCheckIn" class="btn btn-info btn-block" (click)="showHideCheckin()">Check In</button>
+		  <button type="button" name="closeCheckIn" class="btn btn-info btn-block" (click)="submitCheckin(theaterOption, busyOption)">Check In</button>
         </div>
       </div>
-      
+
       <div class="modal" id="feedbackform">
         <div class="modal-content">
-			<div class="text-center border border-light p-5">	
+			<div class="text-center border border-light p-5">
 				<div class="modal-header">
 				  <span class="close" (click)=hidefeedback() >&times;</span>
 				  <h2>Contact Us</h2>
@@ -105,7 +111,7 @@
 						<option value="3">Feature request</option>
 					</select>
 					<br>
-					
+
 					<!-- Message -->
 					<div class="form-group">
 						<textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
