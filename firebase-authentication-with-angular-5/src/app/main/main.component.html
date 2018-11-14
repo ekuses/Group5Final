@@ -56,7 +56,7 @@
                 </tbody>
                   <tr *ngFor="let movie of moviesDb | async " >
                     <td>{{movie.name}}</td>
-                    <td>{{avgTh[1]}}</td>
+                    <td>{{movie.busy}}</td>
                     <td>{{movie.time}}</td>
                     <td>{{movie.theater}}</td>
                   </tr>

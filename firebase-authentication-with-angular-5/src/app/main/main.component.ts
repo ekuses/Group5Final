@@ -35,6 +35,7 @@ export class MainComponent implements OnInit {
   nameFilter$: BehaviorSubject<string|null>;
   moviesRef2 : AngularFirestoreCollection<Movie>;
   avgTh[] = [0,0,0];
+  
 
 
 
@@ -85,7 +86,7 @@ export class MainComponent implements OnInit {
   filterByName() {
     this.nameFilter$.next(this.searchBy);
   }
-  
+
   public getButlerAvg()
   {
     const myObserver = {
