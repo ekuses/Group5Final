@@ -20,7 +20,7 @@ export interface Movie {
 export class MainComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
-  tableshow:boolean;
+  tableshow = "none";
   moviesDb: Observable<Movie[]>;
   theaterDb: Observable<any[]>;
   showCheckin = "none";
@@ -135,16 +135,15 @@ export class MainComponent implements OnInit {
     complete: () => console.log('Observer got a complete notification'),
     };
     this.busyRoyalPark.subscribe(myObserver);
-
   }
 
 
 
    public showTable(){
-    if(this.tableshow){
-      this.tableshow = false;
+    if(this.tableshow == "none"){
+      this.tableshow = "block";
     }else{
-      this.tableshow = true;
+      this.tableshow = "none";
       }
     }
 

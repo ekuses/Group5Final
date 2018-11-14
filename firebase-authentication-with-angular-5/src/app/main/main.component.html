@@ -37,28 +37,32 @@
               {{ theater.ass }}
             </li>
           </ul>
-
-          <div id="txt2"[hidden]="tableshow">
-        	  <table class="table table-striped table-hover" id="table">
-              	  <tbody>
-              		  <tr>
-                		  <th>Movie</th>
-               			  <th>Busy</th>
-                		  <th>Times</th>
-                		  <th>Theatre</th>
-              		  </tr>
-          		  </tbody>
-              	  <tr *ngFor="let movie of moviesDb | async " (click)=[showDetails($index)]>
-                	  <td>{{movie.name}}</td>
+        </div>
+        
+      <div class="modal" id="txt2" [ngStyle]="{'display':tableshow}">
+        <div class="modal-content">
+          <div class="modal-header"><h2>All Times</h2></div>
+          <div class="modal-body">
+            <table class="table table-striped table-hover" id="table">
+                  <tbody>
+                    <tr>
+                      <th>Movie</th>
+                      <th>Busy</th>
+                      <th>Times</th>
+                      <th>Theater</th>
+                    </tr>
+                </tbody>
+                  <tr *ngFor="let movie of moviesDb | async " (click)=[showDetails($index)]>
+                    <td>{{movie.name}}</td>
                     <td>{{movie.busyValue}}</td>
-                	  <td>{{movie.time}}</td>
+                    <td>{{movie.time}}</td>
                     <td>{{movie.theater}}</td>
-              	  </tr>
+                  </tr>
               </table>
               <a (click)="showTable()">Hide</a>
           </div>
-
         </div>
+      </div>
 
         <div class="footer">
           <button class="btn btn-info" (click)=showfeedback() >Contact Us!</button>
