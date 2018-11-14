@@ -85,7 +85,7 @@ export class MainComponent implements OnInit {
   filterByName() {
     this.nameFilter$.next(this.searchBy);
   }
-
+  
   public getButlerAvg()
   {
     const myObserver = {
