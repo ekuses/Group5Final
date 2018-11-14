@@ -107,7 +107,7 @@ export class MainComponent implements OnInit {
 						'<p >graph of busy times for this day?</p>'+
 					'</div>'+
 					'<div id="c2" style="float: center; width: 30%; display: inline-block;">'+
-						'<button type="button" class="btn btn-info btn-block" >Check in</button> '+
+						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
 						'<button type="button" class="btn btn-info btn-block" >Showtimes</button> '+
 						'<button type="button" class="btn btn-info btn-block" >Navigate</button> '+
 					'</div>'+
@@ -119,6 +119,37 @@ export class MainComponent implements OnInit {
           map: map,
           title: tstring,
         });
+
+        google.maps.event.addListener(infowindow, 'domready', function() {
+          document.getElementById("chekin").addEventListener("click", function(e) {
+          
+          infowindow.setContent(
+          '<div id="pop">'+
+           '<div>'+
+            '<label for="busyLevel">How busy this Theatre? </label>'+
+           '</div>'+
+            '<div>'+
+              '<select #busyOption class="" name="busy">'+
+                '<option [value]="1">1</option>'+
+                '<option [value]="2">2</option>'+
+                '<option [value]="3">3</option>'+
+                '<option [value]="4">4</option>'+
+                '<option [value]="5">5</option>'+
+              '</select>'+
+            '</div>'+
+           '<button type="button" name="closeCheckIn" class="btn btn-info " id="send"">Check In</button>'+
+          '</div>'+
+          '<div id = "sent" style="display:none">'+
+          'Checked In!</div>'
+
+              );
+              document.getElementById("send").addEventListener("click", function(e) {
+                  document.getElementById("pop").style.display = "none";
+                  document.getElementById("sent").style.display = "block";
+              });
+          });
+      });
+
         google.maps.event.addListener(marker, 'click', function(content){
           return function(){
             infowindow.setContent(content);
@@ -127,6 +158,7 @@ export class MainComponent implements OnInit {
         }(content));
       }
     }
+
 
     checkIn() {
       this.showCheckin="block";
