@@ -37,6 +37,7 @@ export class MainComponent implements OnInit {
   avgTh[] = [0,0,0];
 
 
+
   ngOnInit() {
     var mapProp = {
           center: new google.maps.LatLng(29.6436, -82.3749),
@@ -69,9 +70,6 @@ export class MainComponent implements OnInit {
         }).valueChanges()
       ));
 
-
-
-
     this.theaterDb = afs.collection('theaters/').valueChanges();
     this.checkInButler = afs.collection('theaters/desc/Butler');
     this.checkInCelebration = afs.collection('theaters/desc/Celebration');
@@ -80,7 +78,6 @@ export class MainComponent implements OnInit {
     this.busyButler = afs.collection('theaters/desc/Butler').valueChanges();
     this.busyCelebration = afs.collection('theaters/desc/Celebration').valueChanges();
     this.busyRoyalPark = afs.collection('theaters/desc/RoyalPark').valueChanges();
-
 
 
   }
@@ -154,6 +151,7 @@ export class MainComponent implements OnInit {
 
 
     public setMarkers(map) {
+      var self = this;
       var theaters = [
         ["Regal Butler Town Center 14", 29.6272, -82.3772, 3],
         ["Regal Celebration Pointe 10 & RPX", 29.6237, -82.3953, 2],
@@ -164,14 +162,13 @@ export class MainComponent implements OnInit {
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
         var avg = this.avgTh[i];
-        console.log("H " + avg);
         var content = '<div class="maprow" id="popup" >'+
 					'<div id="c1" style="float: left; width: 70%;">'+
 						'<h2 style="display: inline-block;">'+theater[0]+' Today\'s busy: '+this.avgTh[i]+'/5</h2>'+
-						'<p >'+theater[1]+'</p>'+
+						'<p id=teaTime [value]="tstring">'+theater[1]+'</p>'+
 						'<p >graph of busy times for this day?</p>'+
 					'</div>'+
-					'<div id="c2" style="float: center; width: 30%; display: inline-block;">'+
+					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
 						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
 						'<button type="button" class="btn btn-info btn-block" >Showtimes</button> '+
 						'<button type="button" class="btn btn-info btn-block" >Navigate</button> '+
@@ -183,18 +180,20 @@ export class MainComponent implements OnInit {
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: tstring,
+          zIndex: theater[3],
         });
 
-        google.maps.event.addListener(infowindow, 'domready', function() {
-          document.getElementById("chekin").addEventListener("click", function(e) {
+        google.maps.event.addListener(infowindow, 'domready', function(tstring) {
+          document.getElementById("chekin").addEventListener("click", function() {
 
+          var element = document.getElementById("chekin").style.display = "none";
           infowindow.setContent(
           '<div id="pop">'+
            '<div>'+
             '<label for="busyLevel">How busy this Theatre? </label>'+
            '</div>'+
             '<div>'+
-              '<select #busyOption class="" name="busy">'+
+              '<select [value] = #busyOption id = "busy" class="" name="busy">'+
                 '<option [value]="1">1</option>'+
                 '<option [value]="2">2</option>'+
                 '<option [value]="3">3</option>'+
@@ -202,15 +201,15 @@ export class MainComponent implements OnInit {
                 '<option [value]="5">5</option>'+
               '</select>'+
             '</div>'+
-           '<button type="button" name="closeCheckIn" class="btn btn-info " id="send"">Check In</button>'+
+           '<button type="button" name="closeCheckIn" class="btn btn-info" id="send" >Check In</button>'+
           '</div>'+
           '<div id = "sent" style="display:none">'+
           'Checked In!</div>'
-
               );
-              document.getElementById("send").addEventListener("click", function(e) {
+              document.getElementById("send").addEventListener("click", function() {
                   document.getElementById("pop").style.display = "none";
                   document.getElementById("sent").style.display = "block";
+                  self.submitCheckin(infowindow.position, document.getElementById("busy"));
               });
           });
       });
@@ -247,18 +246,18 @@ export class MainComponent implements OnInit {
       this.checkInCelebration.add({ busy:  busyValue  });
     }
 
-    submitCheckin(theatre, busyValue)
+    public submitCheckin(theatre, busyValue)
     {
       this.showCheckin="none";
-      if (theatre.value==="RoyalPark")
+      if (theatre.value==="RoyalPark" || theatre.toString() == "(29.6539, -82.3802)")
       {
         this.checkInRoyalParkf(busyValue.value);
       }
-      else if (theatre.value==="Butler")
+      else if (theatre.value==="Butler" || theatre.toString() == "(29.6272, -82.37720000000002)")
       {
         this.checkInButlerf(busyValue.value);
       }
-      else if (theatre.value==="Celebration")
+      else if (theatre.value==="Celebration" || theatre.toString() == "(29.6237, -82.39530000000002)")
       {
         this.checkInCelebrationf(busyValue.value);
       }
