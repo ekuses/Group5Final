@@ -17,8 +17,7 @@
             <div>
               <div class="input-group" id="searchBar">
                 <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchBy" >
-                <button class=" button sec" (click)="filterByName()"> search</button>
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchBy" (ngModelChange)= "filterByName()">
               </div>
             </div>
 
@@ -94,7 +93,7 @@
 				<button class="btn btn-info " type="close" (click)=hideCheckIn() >Cancel</button>
 				<button type="button" name="closeCheckIn" class="btn btn-info " (click)="submitCheckin(theaterOption, busyOption)">Check In</button>
 			</div>
-		  
+
         </div>
       </div>
 
