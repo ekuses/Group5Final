@@ -7,8 +7,6 @@ import { ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 
-
-
 export interface Movie {
   name: string;
   time: string;
@@ -36,7 +34,7 @@ export class MainComponent implements OnInit {
   moviesRef : AngularFirestoreDocument<{test: string}>;
   nameFilter$: BehaviorSubject<string|null>;
   moviesRef2 : AngularFirestoreCollection<Movie>;
-  busyAvg = 0;
+  avgTh[] = [0,0,0];
 
 
   ngOnInit() {
@@ -46,7 +44,9 @@ export class MainComponent implements OnInit {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-        this.setMarkers(this.map);
+        this.getButlerAvg();
+        this.getCelebrationAvg();
+        this.getRoyalParkAvg();
   }
 
   logout() {
@@ -81,7 +81,7 @@ export class MainComponent implements OnInit {
     this.busyCelebration = afs.collection('theaters/desc/Celebration').valueChanges();
     this.busyRoyalPark = afs.collection('theaters/desc/RoyalPark').valueChanges();
 
-    this.getAverageOfBusy();
+
 
   }
 
@@ -89,20 +89,56 @@ export class MainComponent implements OnInit {
     this.nameFilter$.next(this.searchBy);
   }
 
-  public getAverageOfBusy()
+  public getButlerAvg()
   {
     const myObserver = {
-    next: x => {this.busyAvg = 0;
+    next: x => {this.avgTh[0] = 0;
     var i;
     for(i = 0; i < x.length; ++i){
-        this.busyAvg += Number(x[i].busy);
+        this.avgTh[0] += Number(x[i].busy);
     }
-    this.busyAvg = this.busyAvg / i;
-    console.log(this.busyAvg);},
+    this.avgTh[0] = this.avgTh[0] / i;
+    this.avgTh[0] = Math.round(this.avgTh[0] * 10) /  10;
+    this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
     };
     this.busyButler.subscribe(myObserver);
+  }
+
+  public getCelebrationAvg()
+  {
+    const myObserver = {
+    next: x => {this.avgTh[1] = 0;
+    var i;
+    for(i = 0; i < x.length; ++i){
+        this.avgTh[1] += Number(x[i].busy);
+    }
+    this.avgTh[1] = this.avgTh[1] / i;
+    this.avgTh[1] = Math.round(this.avgTh[1] * 10) /  10;
+    this.setMarkers(this.map);},
+    error: err => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+    };
+    this.busyCelebration.subscribe(myObserver);
+  }
+
+  public getRoyalParkAvg()
+  {
+    const myObserver = {
+    next: x => {this.avgTh[2] = 0;
+    var i;
+    for(i = 0; i < x.length; ++i){
+        this.avgTh[2] += Number(x[i].busy);
+    }
+    this.avgTh[2] = this.avgTh[2] / i;
+    this.avgTh[2] = Math.round(this.avgTh[2] * 10) /  10;
+    this.setMarkers(this.map);},
+    error: err => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+    };
+    this.busyRoyalPark.subscribe(myObserver);
+
   }
 
 
@@ -127,9 +163,11 @@ export class MainComponent implements OnInit {
 
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
+        var avg = this.avgTh[i];
+        console.log("H " + avg);
         var content = '<div class="maprow" id="popup" >'+
 					'<div id="c1" style="float: left; width: 70%;">'+
-						'<h2 style="display: inline-block;">'+theater[0]+' ['+theater[4]+']</h2>'+
+						'<h2 style="display: inline-block;">'+theater[0]+' Today\'s busy: '+this.avgTh[i]+'/5</h2>'+
 						'<p >'+theater[1]+'</p>'+
 						'<p >graph of busy times for this day?</p>'+
 					'</div>'+
@@ -149,7 +187,7 @@ export class MainComponent implements OnInit {
 
         google.maps.event.addListener(infowindow, 'domready', function() {
           document.getElementById("chekin").addEventListener("click", function(e) {
-          
+
           infowindow.setContent(
           '<div id="pop">'+
            '<div>'+
@@ -214,7 +252,7 @@ export class MainComponent implements OnInit {
       this.showCheckin="none";
       if (theatre.value==="RoyalPark")
       {
-        //this.checkInRoyalParkf(busyValue.value);
+        this.checkInRoyalParkf(busyValue.value);
       }
       else if (theatre.value==="Butler")
       {
@@ -222,7 +260,7 @@ export class MainComponent implements OnInit {
       }
       else if (theatre.value==="Celebration")
       {
-        //this.checkInCelebrationf(busyValue.value);
+        this.checkInCelebrationf(busyValue.value);
       }
     }
 
