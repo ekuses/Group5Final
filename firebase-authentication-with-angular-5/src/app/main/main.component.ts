@@ -30,9 +30,14 @@ export class MainComponent implements OnInit {
   checkInButler = null;
   checkInCelebration = null;
   checkInRoyalPark = null;
+  busyButler : Observable<any[]>;
+  busyCelebration : Observable<any[]>;
+  busyRoyalPark : Observable<any[]>;
   moviesRef : AngularFirestoreDocument<{test: string}>;
   nameFilter$: BehaviorSubject<string|null>;
   moviesRef2 : AngularFirestoreCollection<Movie>;
+  busyAvg = 0;
+
 
   ngOnInit() {
     var mapProp = {
@@ -72,10 +77,32 @@ export class MainComponent implements OnInit {
     this.checkInCelebration = afs.collection('theaters/desc/Celebration');
     this.checkInRoyalPark = afs.collection('theaters/desc/RoyalPark');
     this.moviesRef = afs.doc('movies/ex');
+    this.busyButler = afs.collection('theaters/desc/Butler').valueChanges();
+    this.busyCelebration = afs.collection('theaters/desc/Celebration').valueChanges();
+    this.busyRoyalPark = afs.collection('theaters/desc/RoyalPark').valueChanges();
+
+    this.getAverageOfBusy();
+
   }
 
   filterByName() {
     this.nameFilter$.next(this.searchBy);
+  }
+
+  public getAverageOfBusy()
+  {
+    const myObserver = {
+    next: x => {this.busyAvg = 0;
+    var i;
+    for(i = 0; i < x.length; ++i){
+        this.busyAvg += Number(x[i].busy);
+    }
+    this.busyAvg = this.busyAvg / i;
+    console.log(this.busyAvg);},
+    error: err => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+    };
+    this.busyButler.subscribe(myObserver);
   }
 
 
@@ -133,7 +160,6 @@ export class MainComponent implements OnInit {
     }
 
 
-
     hideCheckIn()
     {
       this.showCheckin="none";
@@ -160,7 +186,7 @@ export class MainComponent implements OnInit {
       }
       else if (theatre.value==="Butler")
       {
-        //this.checkInButlerf(busyValue.value);
+        this.checkInButlerf(busyValue.value);
       }
       else if (theatre.value==="Celebration")
       {
