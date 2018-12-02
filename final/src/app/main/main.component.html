@@ -1,0 +1,118 @@
+
+<!-- Grid -->
+<div class="container-fluid noPadding">
+
+
+  <!-- Header -->
+  <div class="row noPadding botBorder">
+    <div class="header col-12 noPadding">
+      <nav id="header"class="navbar navbar-expand-lg navbar-dark bg-light">
+        <a class="navbar-brand">Crowdy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <button class="btn btn-outline-primary padding-right" type="button" (click)="checkIn()">Check In</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-danger" type="button" (click)="logout()">Sign Out</button>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item align-right">
+                <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button> 
+              </li>
+          </ul>
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"[(ngModel)]="searchBy" (ngModelChange)= "filterByName()">
+          </form> -->
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Middle Row with movies and Map -->
+  <div class="row">
+
+    <!-- Movies -->
+    <app-movies class="movies col-sm-3"></app-movies>
+
+
+    <!-- Map -->
+    <div #gmap id="map" class="map col-sm-9"></div>
+
+
+  </div>
+
+</div>
+
+<!-- Check in form -->
+<div class="modal" id="testPopup" [ngStyle]="{'display':showCheckin}">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="hideCheckIn()" >&times;</span>
+      <h2>Check in with Crowdy!</h2>
+    </div>
+    <div class="modal-body">
+      <div action=" /action_page.php" class="form-group">
+        <br>
+        <label for="theatre"> Theatre</label>
+        <select #theaterOption name="theatre" #theaterChosen>
+            <option *ngFor="let theater of theaterDb | async" [value]="theater.name">{{theater.name}}</option>
+        </select>
+        <label for="busyLevel">How busy this Theatre?</label>
+        <select #busyOption class="" name="busy">
+          <option [value]="1">1</option>
+          <option [value]="2">2</option>
+          <option [value]="3">3</option>
+          <option [value]="4">4</option>
+          <option [value]="5">5</option>
+        </select>
+      </div>
+    </div>
+    <!-- Send button -->
+    <div class="modal-footer">
+      <button class="btn btn-info " type="close" (click)=hideCheckIn() >Cancel</button>
+      <button type="button" name="closeCheckIn" class="btn btn-info " (click)="submitCheckin(theaterOption, busyOption)">Check In</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Feedback Form -->
+<div class="modal" id="feedbackform">
+  <div class="modal-content">
+    <div class="text-center border border-light p-5">
+      <div class="modal-header">
+        <span class="close" (click)=hidefeedback() >&times;</span>
+        <h2>Contact Us</h2>
+      </div>
+      <div class="modal-body">
+        <!-- Name -->
+        <br><input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+        <!-- Email -->
+        <br><input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <!-- Subject -->
+        <br><label>Subject</label>
+        <select class="browser-default custom-select mb-4">
+          <option value="" disabled>Choose option</option>
+          <option value="1" selected>Feedback</option>
+          <option value="2">Report a bug</option>
+          <option value="3">Feature request</option>
+        </select>
+        <br>
+        <!-- Message -->
+        <div class="form-group">
+          <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+        </div>
+      </div>
+      <!-- Send button -->
+      <div  class="modal-footer">
+        <button class="btn btn-info " type="close" (click)=hidefeedback()>Cancel</button>
+        <button class="btn btn-info " type="submit" (click)=sendfeedback()>Send</button>
+      </div>
+    </div>
+  </div>
+</div>

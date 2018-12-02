@@ -1,0 +1,81 @@
+<!-- <div class="movies col-sm-3">
+  <div class="movie-container">
+    <ul class="movies">
+      <li *ngFor="let movie of moviesDb | async">
+        <h5>{{ movie.name }}</h5>
+        <h5>{{ movie.time }}</h5>
+      </li>
+    </ul>
+    <br>
+    <ul class="movies">
+      <li *ngFor="let theater of theaterDb | async">
+        <h5>{{ theater.name }}</h5>
+        <h5>{{ theater.ass }}</h5>
+      </li>
+    </ul>
+    <div id="txt2"[hidden]="tableshow">
+      <table class="table table-striped table-hover" id="table">
+            <tbody>
+              <tr>
+                <th>Movie</th>
+                <th>Busy</th>
+                <th>Times</th>
+                <th>Theatre</th>
+              </tr>
+          </tbody>
+            <tr *ngFor="let movie of moviesDb | async " (click)=[showDetails($index)]>
+              <td>{{movie.name}}</td>
+              <td>{{movie.busyValue}}</td>
+              <td>{{movie.time}}</td>
+              <td>{{movie.theater}}</td>
+            </tr>
+        </table>
+        <a (click)="showTable()">Hide</a>
+    </div>
+  </div>      
+</div> -->
+
+<div id="movie-container">
+  <!-- Select an option -->
+  <!-- <div class="option-select">
+    <div class="top-half ">
+      <p>View Movies</p>
+    </div>
+    <div class="bottom-half">
+      <p>View Theaters</p>
+    </div>
+  </div> -->
+  <section class="option-container">
+      <div class="option-top">
+          <article>
+              <button class="option-button" (click)="doShowTheaters()">Show Theaters</button>
+          </article>
+      </div>
+      <div class="option-bottom">
+          <article>
+              <button class="option-button" (click)="doShowMovies()">Show Movies</button>
+          </article>
+      </div>
+  </section>
+</div>
+
+  <!-- <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#celebration" class="nav-link active" >Celebration</a>
+    </li>
+    <li class="nav-item">
+      <a href="#butler" class="nav-link">Butler</a>
+    </li>
+    <li class="nav-item">
+      <a href="#newberry" class="nav-link">Newberry</a>
+    </li> 
+
+  </ul>   -->
+
+  <!-- <ul class="movie-list">
+    <li *ngFor="let movie of moviesDb | async">
+        <h5>{{ movie.name }}</h5>
+        <h5>{{ movie.time }}</h5>
+      </li>
+  </ul> -->
+
