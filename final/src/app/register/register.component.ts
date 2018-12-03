@@ -43,11 +43,22 @@ export class RegisterComponent {
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
+       this.tryLogin(value);
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
        this.successMessage = "";
      })
    }
+
+   tryLogin(value){
+    this.authService.doLogin(value)
+    .then(res => {
+      this.router.navigate(['/main']);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    })
+  }
 
 }
