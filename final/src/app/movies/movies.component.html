@@ -18,7 +18,13 @@
     <header>
       <button class="btn btn-primary" (click)="doShowOptions()">back</button>
       <h3>Movies</h3>
-      <div id="accordion">
+    </header>
+    <ul>
+        <li *ngFor="let movie of allMoviesArr; let i = index;">
+          {{ movie.title }}
+        </li>
+    </ul>
+      <!-- <div id="accordion">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
@@ -62,8 +68,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </div> -->
+ 
     
   </section>
 
@@ -79,13 +85,18 @@
 
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
     <header>
-      <button class="btn btn-primary" (click)="doShowOptions()">back</button>
+      <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Newberry</h3>
-      <!-- Newberry Accordian for Movies -->
-      <div id ="newberry-accordian">
-        <!-- Using ngFor to repeat Cards -->
+    </header>
+      <!-- <ul>
+        <li *ngFor="let movie of newberryMovies.movie; let i = index;">
+          {{ movie.title }}
+        </li>
+      </ul> -->
+      <!-- <div id ="newberry-accordian">
+        
         <div class="card" *ngFor="let movie of newberryMovies.movie; let i = index;">
-          <!-- Card Header -->
+          
           <div class="card-header" [attr.id]="'heading' + i">
             <h5 class="mb-0">
               <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
@@ -94,7 +105,7 @@
             </h5>
           </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div id="collapseOne" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
             <div class="card-body">
               <ul>
                 <li *ngFor="time in newberryMovieTimes[i]."></li>
@@ -103,8 +114,7 @@
           </div>
 
         </div>
-      </div>
-    </header>
+      </div> -->
   </section>
 
   <section class="celebration-container" [ngStyle]="{'display':showCelebration}">

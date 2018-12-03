@@ -29,14 +29,14 @@ export class MoviesComponent implements OnInit {
   butler = false;
 
   //these are all arrays that will be filled with either times or movies
-  newberryMovies;
-  newberryMovieTimes;
-  celebrationMovies;
-  celebrationMovieTimes;
-  butlerMovies;
-  butlerMovieTimes;
-  allMovies;
-  allMovieTimes;
+  newberryMoviesArr:any[] = [];
+  newberryMovieTimes:any[] = [];
+  celebrationMoviesArr:any[] = [];
+  celebrationMovieTimes:any[] = [];
+  butlerMoviesArr:any[] = [];
+  butlerMovieTimes:any[] = [];
+  allMoviesArr:any[] = [];
+  allMovieTimes:any[] = [];
 
   //these are going to be used with [ngStyle] to show different parts from the movies
   showMovies = 'none';
@@ -48,28 +48,38 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.moviesService.getTheaterMovies(this.newberryID).subscribe(
-      (response) => this.newberryMovies = response
+      (response) => this.newberryMoviesArr = response.movies
     );
     this.moviesService.getTheaterMovies(this.celebrationID).subscribe(
-      (response) => this.celebrationMovies = response
+      (response) => this.celebrationMoviesArr = response.movies
     );
     this.moviesService.getTheaterMovies(this.butlerID).subscribe(
-      (response) => this.butlerMovies = response
+      (response) => this.butlerMoviesArr = response.movies
     ) ;
     this.moviesService.getAllMovies().subscribe(
-      (response) => this.allMovies = response
+      (response) => this.allMoviesArr = response.movies
     ) ;
 
   }
 
   doShowMovies() {
     //loop through the movies
-    for(var movie of this.allMovies.movies){
+    for(var movie of this.allMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
         (response) => this.allMovieTimes.push(response)
       );
     }
+    console.log('All Movie Times');
+    console.log(this.allMovieTimes);
+    console.log('All Movies');
+    console.log(this.allMoviesArr);
+    console.log('All Butler Movies');
+    console.log(this.butlerMoviesArr);
+    console.log('All Newberry Times');
+    console.log(this.newberryMoviesArr);
+    console.log('All Celebration Times');
+    console.log(this.celebrationMoviesArr);
     this.showOptions = 'none';
     this.showTheaters = 'none';
     this.showMovies = 'block';
@@ -92,7 +102,7 @@ export class MoviesComponent implements OnInit {
 
   doShowNewberry(){
     //loop through the movies
-    for(var movie of this.newberryMovies.movies){
+    for(var movie of this.newberryMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
         (response) => this.newberryMovieTimes.push(response)
@@ -103,7 +113,7 @@ export class MoviesComponent implements OnInit {
   }
   doShowCelebration(){
     //loop through the movies
-    for(var movie of this.celebrationMovies.movies){
+    for(var movie of this.celebrationMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
         (response) => this.celebrationMovieTimes.push(response)
@@ -115,7 +125,7 @@ export class MoviesComponent implements OnInit {
 
   doShowButler(){
     //loop through the movies
-    for(var movie of this.butlerMovies.movies){
+    for(var movie of this.butlerMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
         (response) => this.butlerMovieTimes.push(response)
