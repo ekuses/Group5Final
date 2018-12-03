@@ -11,6 +11,8 @@ export class MoviesComponent implements OnInit {
   newberryMovies;
   celebrationMovies;
   butlerMovies;
+  allMovies;
+
   showMovies = 'none';
   showTheaters = 'none';
   showOptions = 'block';
@@ -21,12 +23,16 @@ export class MoviesComponent implements OnInit {
     this.newberryMovies = this.moviesService.getNewberryMovies();
     this.celebrationMovies = this.moviesService.getCelebrationMovies();
     this.butlerMovies = this.moviesService.getButlerMovies();
+    for(var movie of this.newberryMovies){
+      this.
+    }
   }
 
   doShowMovies() {
     this.showOptions = 'none';
     this.showTheaters = 'none';
     this.showMovies = 'block';
+    this.allMovies = this.moviesService.getAllMovies();
   }
 
   doShowTheaters() {
