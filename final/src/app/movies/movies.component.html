@@ -88,11 +88,11 @@
       <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Newberry</h3>
     </header>
-      <!-- <ul>
-        <li *ngFor="let movie of newberryMovies.movie; let i = index;">
+      <ul>
+        <li *ngFor="let movie of newberryMoviesArr; let i = index;">
           {{ movie.title }}
         </li>
-      </ul> -->
+      </ul>
       <!-- <div id ="newberry-accordian">
         
         <div class="card" *ngFor="let movie of newberryMovies.movie; let i = index;">
@@ -119,17 +119,27 @@
 
   <section class="celebration-container" [ngStyle]="{'display':showCelebration}">
     <header>
-      <button class="btn btn-primary" (click)="doShowOptions()">back</button>
+      <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Celebration Point</h3>
-
+      <ul>
+        <li *ngFor="let movie of newberryMoviesArr; let i = index;">
+          {{ movie.title }}
+        </li>
+      </ul>
     </header>
   </section>
 
   <section class="butler-container" [ngStyle]="{'display':showButler}">
     <header>
-      <button class="btn btn-primary" (click)="doShowOptions()">back</button>
+      <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Butler Plaza</h3>
     </header>
+    <ul>
+      <li *ngFor="let movie of newberryMoviesArr; let i = index;">
+        {{ movie.title }}
+      </li>
+    </ul>
+
   </section>
 
 </div>
