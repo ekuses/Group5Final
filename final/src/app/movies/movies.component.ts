@@ -10,45 +10,6 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 export class MoviesComponent implements OnInit {
 
   constructor(private moviesService: MoviesService){
-    this.moviesService.getTheaterMovies(this.newberryID).subscribe(
-      (response) => this.newberryMoviesArr = response.movies
-    );
-    this.moviesService.getTheaterMovies(this.celebrationID).subscribe(
-      (response) => this.celebrationMoviesArr = response.movies
-    );
-    this.moviesService.getTheaterMovies(this.butlerID).subscribe(
-      (response) => this.butlerMoviesArr = response.movies
-    ) ;
-    this.moviesService.getAllMovies().subscribe(
-      (response) => this.allMoviesArr = response.movies
-    ) ;
-    for(var movie of this.newberryMoviesArr){
-      //fetch showtimes 
-      this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
-        (response) => this.newberryMovieTimes.push(response)
-      );
-    }
-    //loop through the movies
-    for(var movie of this.allMoviesArr){
-      //fetch showtimes 
-      this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
-        (response) => this.allMovieTimes.push(response)
-      );
-    }
-    //loop through the movies
-    for(var movie of this.celebrationMoviesArr){
-      //fetch showtimes 
-      this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
-        (response) => this.celebrationMovieTimes.push(response)
-      );
-    }
-    for(var movie of this.butlerMoviesArr){
-      //fetch showtimes 
-      this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
-        (response) => this.butlerMovieTimes.push(response)
-      );
-    }
-    
 
   }
 
@@ -68,6 +29,7 @@ export class MoviesComponent implements OnInit {
   butler = false;
 
   //these are all arrays that will be filled with either times or movies
+
   newberryMoviesArr:any[] = [];
   newberryMovieTimes:any[] = [];
   celebrationMoviesArr:any[] = [];
@@ -86,26 +48,39 @@ export class MoviesComponent implements OnInit {
   showCelebration = 'none';
 
   ngOnInit() {
+    this.moviesService.getTheaterMovies(this.newberryID).subscribe(
+      (response) => this.newberryMoviesArr = response.movies
+    );
+    this.moviesService.getTheaterMovies(this.celebrationID).subscribe(
+      (response) => this.celebrationMoviesArr = response.movies
+    );
+    this.moviesService.getTheaterMovies(this.butlerID).subscribe(
+      (response) => this.butlerMoviesArr = response.movies
+    ) ;
+    this.moviesService.getAllMovies().subscribe(
+      (response) => this.allMoviesArr = response.movies
+    ) ;
+
   }
 
   doShowMovies() {
-    
+    //loop through the movies
+    for(var movie of this.allMoviesArr){
+      //fetch showtimes 
+      this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
+        (response) => this.allMovieTimes.push(response)
+      );
+    }
     console.log('All Movie Times');
     console.log(this.allMovieTimes);
     console.log('All Movies');
     console.log(this.allMoviesArr);
     console.log('All Butler Movies');
     console.log(this.butlerMoviesArr);
-    console.log('All Newberry Movies');
-    console.log(this.newberryMoviesArr);
-    console.log('All Celebration Movies');
-    console.log(this.celebrationMoviesArr);
-    console.log('All Butler Times');
-    console.log(this.butlerMovieTimes);
     console.log('All Newberry Times');
-    console.log(this.newberryMovieTimes);
+    console.log(this.newberryMoviesArr);
     console.log('All Celebration Times');
-    console.log(this.celebrationMovieTimes);
+    console.log(this.celebrationMoviesArr);
     this.showOptions = 'none';
     this.showTheaters = 'none';
     this.showMovies = 'block';
@@ -128,17 +103,35 @@ export class MoviesComponent implements OnInit {
 
   doShowNewberry(){
     //loop through the movies
- 
+    for(var movie of this.newberryMoviesArr){
+      //fetch showtimes 
+      this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
+        (response) => this.newberryMovieTimes.push(response)
+      );
+    }
     this.showTheaters='none';
     this.showNewberry = 'block';
   }
   doShowCelebration(){
-    
+    //loop through the movies
+    for(var movie of this.celebrationMoviesArr){
+      //fetch showtimes 
+      this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
+        (response) => this.celebrationMovieTimes.push(response)
+      );
+    }
     this.showTheaters='none';
     this.showCelebration = 'block';
   }
 
   doShowButler(){
+    //loop through the movies
+    for(var movie of this.butlerMoviesArr){
+      //fetch showtimes 
+      this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
+        (response) => this.butlerMovieTimes.push(response)
+      );
+    }
     this.showTheaters='none';
     this.showButler = 'block';
   }

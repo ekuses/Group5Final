@@ -100,35 +100,32 @@
           </h5>
         </div>
 
-        <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
+        <div [attr.id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
           <div class="card-body">
-            <!-- <div *ngIf="newberryMovieTimes[i].showtimes">
-              <h4>Butler</h4>
-              <ul>
-                <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                  <div *ngIf="time.cinema_id === '42490'">
-                    <p>{{ time.start_at }}</p>
-                  </div>
-                </li>
-              </ul>
-              <h4>Newberry</h4>
-              <ul>
-                <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                  <div *ngIf="time.cinema_id === '42506'">
-                    <p>{{ time.start_at }}</p>
-                  </div>
-                </li>
-              </ul>
-              <h4>Celebration</h4>
-              <ul>
-                <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                  <div *ngIf="time.cinema_id === '64196'">
-                    <p>{{ time.start_at }}</p>
-                  </div>
-                </li>
-              </ul>
-            </div> -->
-            
+            <h4>Butler</h4>
+            <ul>
+              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
+                <div *ngIf="time.cinema_id == 42490">
+                  <p>{{ time.start_at }}</p>
+                </div>
+              </li>
+            </ul>
+            <h4>Newberry</h4>
+            <ul>
+              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
+                <div *ngIf="time.cinema_id == 42506">
+                  <p>{{ time.start_at }}</p>
+                </div>
+              </li>
+            </ul>
+            <h4>Celebration</h4>
+            <ul>
+              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
+                <div *ngIf="time.cinema_id == 42490">
+                  <p>{{ time.start_at }}</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
