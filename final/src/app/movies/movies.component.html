@@ -14,61 +14,55 @@
       </div>
   </section>
 
+  <section class="theaters-container" [ngStyle]="{'display':showTheaters}">
+      <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
+      <h3>Theaters</h3>
+      <div class="option-bottom" (click)="doShowNewberry()">
+          <article>
+              <button class="option-button btn btn-link" >Royal Park</button>
+          </article>
+      </div>
+      <div class="option-bottom" (click)="doShowCelebration()">
+          <article>
+              <button class="option-button btn btn-link">Celebration</button>
+          </article>
+      </div>
+      <div class="option-bottom" (click)="doShowButler()">
+          <article>
+              <button class="option-button btn btn-link">Butler Plaza</button>
+          </article>
+      </div>
+  </section>
+
   <section class="movies-container" [ngStyle]="{'display':showMovies}">
     <header>
       <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
       <h3>Movies</h3>
     </header>
-    <ul>
-        <li *ngFor="let movie of allMoviesArr; let i = index;">
-          {{ movie.title }}
-        </li>
-    </ul>
-      <!-- <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Movie #1
-              </button>
-            </h5>
-          </div>
-
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              Example times 1
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Movie #2
-              </button>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-              example times 2
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Movie #3
-              </button>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-              example times 3
-            </div>
-          </div>
-        </div>
-      </div> -->
+    <ngb-accordion [closeOthers]="true">
+        <ngb-panel *ngFor="let movie of allMoviesArr; let i = index;" id="static-{{i}}" >
+          <ng-template ngbPanelTitle class="overflow-wrap">
+            <span class="overflow-wrap">
+              <h5 class="mb-0 pl-0">
+                <button class="pl-0 btn btn-link text-center">
+                  {{ movie.title }}
+                </button>
+              </h5>
+            </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <ul class="list-group">
+              <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
+                <div>
+                  {{ time.start_at }}
+                </div>
+              </li>
+            </ul>
+  
+              
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
       <!-- <div class="card-body">
           <h4>Butler</h4>
           <ul>
@@ -99,30 +93,10 @@
 
   </section>
 
-  <section class="theaters-container" [ngStyle]="{'display':showTheaters}">
-      <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
-      <h3>Theaters</h3>
-      <div class="option-bottom" (click)="doShowNewberry()">
-          <article>
-              <button class="option-button btn btn-link" >Newberry</button>
-          </article>
-      </div>
-      <div class="option-bottom" (click)="doShowCelebration()">
-          <article>
-              <button class="option-button btn btn-link">Celebration</button>
-          </article>
-      </div>
-      <div class="option-bottom" (click)="doShowButler()">
-          <article>
-              <button class="option-button btn btn-link">Butler Plaza</button>
-          </article>
-      </div>
-  </section>
-
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
-      <h3>Newberry</h3>
+      <h3>Royal Park</h3>
     </header>
     <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of newberryMoviesArr; let i = index;" id="static-{{i}}" >
