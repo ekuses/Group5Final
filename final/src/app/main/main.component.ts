@@ -71,15 +71,18 @@ export class MainComponent implements OnInit {
           return query;
         }).valueChanges()
       ));
-
+      var a  = Number(Date.now());
+      var b  = Number(Date.now()) - 60000;
+    console.log("todays date = "  + a);
+    console.log("todays date minus a number = "  +b);
     this.theaterDb = afs.collection('theaters/').valueChanges();
     this.checkInButler = afs.collection('theaters/desc/Butler');
     this.checkInCelebration = afs.collection('theaters/desc/Celebration');
     this.checkInRoyalPark = afs.collection('theaters/desc/RoyalPark');
     this.moviesRef = afs.doc('movies/ex');
-    this.busyButler = afs.collection('theaters/desc/Butler').valueChanges();
-    this.busyCelebration = afs.collection('theaters/desc/Celebration').valueChanges();
-    this.busyRoyalPark = afs.collection('theaters/desc/RoyalPark').valueChanges();
+    this.busyButler = afs.collection('theaters/desc/Butler', ref => ref.where('date', '>=', (Date.now() - 86400000))).valueChanges();
+    this.busyCelebration = afs.collection('theaters/desc/Celebration', ref => ref.where('date', '>=', (Date.now() - 86400000))).valueChanges();
+    this.busyRoyalPark = afs.collection('theaters/desc/RoyalPark', ref => ref.where('date', '>=', (Date.now() - 86400000))).valueChanges();
 
 
   }
