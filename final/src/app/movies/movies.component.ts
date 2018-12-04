@@ -75,9 +75,10 @@ export class MoviesComponent implements OnInit {
     }
     today = yyyy+'-'+mm+'-'+dd;
     for(var i = showtimes.length - 1; i >= 0; i--) {
-      let showdate = showtimes[i].start_at.splice(0,10);
+      console.log(showtimes[i].start_at);
+      var showdate = showtimes[i].start_at.slice(0,10);
       if(showdate != today) {
-         showtimes.splice(i, 1);
+        showtimes.splice(i, 1);
       }
     }
     return showtimes;
@@ -133,7 +134,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.newberryMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
-        (response) => this.newberryMovieTimes.push(response.showtimes)
+        (response) => this.newberryMovieTimes.push(this.isToday(response.showtimes))
       );
     }
     this.showTheaters='none';
@@ -144,7 +145,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.celebrationMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
-        (response) => this.celebrationMovieTimes.push(response.showtimes)
+        (response) => this.celebrationMovieTimes.push(this.isToday(response.showtimes))
       );
     }
     this.showTheaters='none';
@@ -156,7 +157,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.butlerMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
-        (response) => this.butlerMovieTimes.push(response.showtimes)
+        (response) => this.butlerMovieTimes.push(this.isToday(response.showtimes))
       );
     }
     this.showTheaters='none';
