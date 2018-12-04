@@ -79,6 +79,16 @@ export class MoviesComponent implements OnInit {
       var sliceMeAgain = showtimes[i].start_at;
       var showdate = sliceMe.slice(0,10);
       var timeOnly = sliceMeAgain.slice(11,16);
+      var hours = timeOnly;
+      hours = parseInt(hours.slice(0,2));
+      var rest = timeOnly.slice(2,5);
+
+      if (hours > 12){
+        hours -= 12;
+        timeOnly = hours.toString() + rest +'pm';
+      } else {
+        timeOnly = hours + rest + 'am';
+      }
       if(showdate != today) {
         showtimes.splice(i, 1);
       } else {
