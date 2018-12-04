@@ -42,7 +42,7 @@ export class MoviesComponent implements OnInit {
   //these are going to be used with [ngStyle] to show different parts from the movies
   showMovies = 'none';
   showTheaters = 'none';
-  showOptions = 'block';
+  showOptions = 'flex';
   showButler = 'none';
   showNewberry = 'none';
   showCelebration = 'none';
@@ -69,7 +69,7 @@ export class MoviesComponent implements OnInit {
     var yyyy = today.getFullYear();
     if(dd<10) {
       dd = '0'+dd
-    } 
+    }
     if(mm<10) {
       mm = '0'+mm
     }
@@ -98,7 +98,7 @@ export class MoviesComponent implements OnInit {
       } else {
         showtimes[i].start_at = timeOnly;
       }
-      
+
     }
 
     return showtimes;
@@ -108,7 +108,7 @@ export class MoviesComponent implements OnInit {
   doShowMovies() {
     //loop through the movies
     for(var movie of this.allMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
         (response) => this.allMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -152,7 +152,7 @@ export class MoviesComponent implements OnInit {
   doShowNewberry(){
     //loop through the movies
     for(var movie of this.newberryMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
         (response) => this.newberryMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -163,7 +163,7 @@ export class MoviesComponent implements OnInit {
   doShowCelebration(){
     //loop through the movies
     for(var movie of this.celebrationMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
         (response) => this.celebrationMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -175,7 +175,7 @@ export class MoviesComponent implements OnInit {
   doShowButler(){
     //loop through the movies
     for(var movie of this.butlerMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
         (response) => this.butlerMovieTimes.push(this.isToday(response.showtimes))
       );
