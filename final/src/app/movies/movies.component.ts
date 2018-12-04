@@ -29,6 +29,7 @@ export class MoviesComponent implements OnInit {
   butler = false;
 
   //these are all arrays that will be filled with either times or movies
+
   newberryMoviesArr:any[] = [];
   newberryMovieTimes:any[] = [];
   celebrationMoviesArr:any[] = [];

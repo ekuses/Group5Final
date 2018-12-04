@@ -5,7 +5,9 @@ section{
   display: flex;
   flex-direction: column;
 }
-
+.movie-container{
+  overflow: auto;
+}
 div {
   display: flex;
   flex-direction: column;
