@@ -124,7 +124,6 @@
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Newberry</h3>
     </header>
-<<<<<<< HEAD
     <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of newberryMoviesArr; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
@@ -137,45 +136,22 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
-              <ul class="list-group">
-                  <li *ngFor="let time of newberryMovieTimes[i]" class="list-group-item">
-                    {{ time.start_at }}
-                  </li>
-                </ul>
+              <div style="flex-direction: row;">
+                  <div style="flex:1;">
+                    <ul class="list-group">
+                      <li *ngFor="let time of newberryMovieTimes[i]" class="list-group-item">
+                        {{ time.start_at }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div style="flex:1;">
+                    <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded at this time">
+                  </div>
+                </div>
+              
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
-=======
-    <div id ="newberry-accordian">
-       <!-- each movie will be a card -->
-      <div class="card" *ngFor="let movie of newberryMoviesArr; let i = index;">
-        <!-- Movie title will go in card header -->
-        <div class="card-header" [attr.id]="'heading' + i">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
-              {{ movie.title }}
-            </button>
-          </h5>
-        </div>
-        <!-- this shows all the times for each movie at the newberry theater -->
-        <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
-          <div style="flex-direction: row;">
-            <div style="flex:1;">
-              <ul class="list-unstyled">
-                <li *ngFor="let time of newberryMovieTimes[i]">
-                  {{ time.start_at }}
-                </li>
-              </ul>
-            </div>
-            <div style="flex:1;">
-              <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
->>>>>>> 3771dc229bd3e8d9a5059fad8af1e71068beda9e
   </section>
 
   <section class="celebration-container" [ngStyle]="{'display':showCelebration}">
