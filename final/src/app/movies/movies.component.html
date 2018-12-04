@@ -139,7 +139,7 @@
         <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
           <div class="card-body">
             <ul class="list-unstyled">
-              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
+              <li *ngFor="let time of newberryMovieTimes[i]">
                 <p>{{ time.start_at }}</p>
               </li>
             </ul>
@@ -170,7 +170,7 @@
          <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#celebration-accordion">
            <div class="card-body">
              <ul class="list-unstyled">
-               <li *ngFor="let time of celebrationMovieTimes[i].showtimes">
+               <li *ngFor="let time of celebrationMovieTimes[i]">
                   <p>{{ time.start_at }}</p>
                </li>
              </ul>
@@ -201,7 +201,7 @@
          <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#butler-accordion">
            <div class="card-body">
              <ul class="list-unstyled">
-               <li *ngFor="let time of butlerMovieTimes[i].showtimes">
+               <li *ngFor="let time of butlerMovieTimes[i]">
                   <p>{{ time.start_at }}</p>
                </li>
              </ul>

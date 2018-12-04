@@ -62,13 +62,34 @@ export class MoviesComponent implements OnInit {
     ) ;
 
   }
+  isToday(showtimes){
+    var today:any = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10) {
+      dd = '0'+dd
+    } 
+    if(mm<10) {
+      mm = '0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    for(var i = showtimes.length - 1; i >= 0; i--) {
+      let showdate = showtimes[i].start_at.splice(0,10);
+      if(showdate != today) {
+         showtimes.splice(i, 1);
+      }
+    }
+    return showtimes;
+
+  }
 
   doShowMovies() {
     //loop through the movies
     for(var movie of this.allMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
-        (response) => this.allMovieTimes.push(response)
+        (response) => this.allMovieTimes.push(this.isToday(response.showtimes))
       );
     }
     console.log('All Movie Times');
@@ -77,10 +98,16 @@ export class MoviesComponent implements OnInit {
     console.log(this.allMoviesArr);
     console.log('All Butler Movies');
     console.log(this.butlerMoviesArr);
-    console.log('All Newberry Times');
+    console.log('All Newberry Movies');
     console.log(this.newberryMoviesArr);
-    console.log('All Celebration Times');
+    console.log('All Celebration Movies');
     console.log(this.celebrationMoviesArr);
+    console.log('All Butler Times');
+    console.log(this.butlerMovieTimes);
+    console.log('All Newberry Times');
+    console.log(this.newberryMovieTimes);
+    console.log('All Celebration Times');
+    console.log(this.celebrationMovieTimes);
     this.showOptions = 'none';
     this.showTheaters = 'none';
     this.showMovies = 'block';
@@ -106,7 +133,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.newberryMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
-        (response) => this.newberryMovieTimes.push(response)
+        (response) => this.newberryMovieTimes.push(response.showtimes)
       );
     }
     this.showTheaters='none';
@@ -117,7 +144,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.celebrationMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
-        (response) => this.celebrationMovieTimes.push(response)
+        (response) => this.celebrationMovieTimes.push(response.showtimes)
       );
     }
     this.showTheaters='none';
@@ -129,7 +156,7 @@ export class MoviesComponent implements OnInit {
     for(var movie of this.butlerMoviesArr){
       //fetch showtimes 
       this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
-        (response) => this.butlerMovieTimes.push(response)
+        (response) => this.butlerMovieTimes.push(response.showtimes)
       );
     }
     this.showTheaters='none';
