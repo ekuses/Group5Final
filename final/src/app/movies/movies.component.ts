@@ -75,11 +75,16 @@ export class MoviesComponent implements OnInit {
     }
     today = yyyy+'-'+mm+'-'+dd;
     for(var i = showtimes.length - 1; i >= 0; i--) {
-      console.log(showtimes[i].start_at);
-      var showdate = showtimes[i].start_at.slice(0,10);
+      var sliceMe = showtimes[i].start_at;
+      var sliceMeAgain = showtimes[i].start_at;
+      var showdate = sliceMe.slice(0,10);
+      var timeOnly = sliceMeAgain.slice(11,16);
       if(showdate != today) {
         showtimes.splice(i, 1);
+      } else {
+        showtimes[i].start_at = timeOnly;
       }
+      
     }
     return showtimes;
 

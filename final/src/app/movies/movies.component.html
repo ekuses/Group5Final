@@ -132,6 +132,7 @@
           <h5 class="mb-0">
             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
               {{ movie.title }}
+              <!-- <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded"> -->
             </button>
           </h5>
         </div>
@@ -140,7 +141,7 @@
           <div class="card-body">
             <ul class="list-unstyled">
               <li *ngFor="let time of newberryMovieTimes[i]">
-                <p>{{ time.start_at }}</p>
+                {{ time.start_at }}
               </li>
             </ul>
           </div>
@@ -171,7 +172,7 @@
            <div class="card-body">
              <ul class="list-unstyled">
                <li *ngFor="let time of celebrationMovieTimes[i]">
-                  <p>{{ time.start_at }}</p>
+                  {{ time.start_at }}
                </li>
              </ul>
            </div>
@@ -202,7 +203,7 @@
            <div class="card-body">
              <ul class="list-unstyled">
                <li *ngFor="let time of butlerMovieTimes[i]">
-                  <p>{{ time.start_at }}</p>
+                  {{ time.start_at }}
                </li>
              </ul>
            </div>
