@@ -2,14 +2,14 @@
 
 
   <section class="option-container" [ngStyle]="{'display':showOptions}">
-      <div class="option-top">
+      <div class="option-top" (click)="doShowTheaters()">
           <article>
-              <button class="option-button" (click)="doShowTheaters()">Show Theaters</button>
+              <button class="option-button btn btn-link" >Show Theaters</button>
           </article>
       </div>
-      <div class="option-bottom">
+      <div class="option-bottom" (click)="doShowMovies()">
           <article>
-              <button class="option-button" (click)="doShowMovies()">Show Movies</button>
+              <button class="option-button btn btn-link">Show Movies</button>
           </article>
       </div>
   </section>
@@ -69,6 +69,32 @@
           </div>
         </div>
       </div> -->
+      <!-- <div class="card-body">
+          <h4>Butler</h4>
+          <ul>
+            <li *ngFor="let time of allMovieTimes[i].showtimes">
+              <div *ngIf="time.cinema_id == 42490">
+                <p>{{ time.start_at }}</p>
+              </div>
+            </li>
+          </ul>
+          <h4>Newberry</h4>
+          <ul>
+            <li *ngFor="let time of allMovieTimes[i].showtimes">
+              <div *ngIf="time.cinema_id == 42506">
+                <p>{{ time.start_at }}</p>
+              </div>
+            </li>
+          </ul>
+          <h4>Celebration</h4>
+          <ul>
+            <li *ngFor="let time of allMovieTimes[i].showtimes">
+              <div *ngIf="time.cinema_id == 42490">
+                <p>{{ time.start_at }}</p>
+              </div>
+            </li>
+          </ul>
+        </div> -->
  
     
   </section>
@@ -99,31 +125,12 @@
             </button>
           </h5>
         </div>
-
-        <div [attr.id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
+        <!-- this shows all the times for each movie at the newberry theater -->
+        <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
           <div class="card-body">
-            <h4>Butler</h4>
-            <ul>
+            <ul class="list-unstyled">
               <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                <div *ngIf="time.cinema_id == 42490">
-                  <p>{{ time.start_at }}</p>
-                </div>
-              </li>
-            </ul>
-            <h4>Newberry</h4>
-            <ul>
-              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                <div *ngIf="time.cinema_id == 42506">
-                  <p>{{ time.start_at }}</p>
-                </div>
-              </li>
-            </ul>
-            <h4>Celebration</h4>
-            <ul>
-              <li *ngFor="let time of newberryMovieTimes[i].showtimes">
-                <div *ngIf="time.cinema_id == 42490">
-                  <p>{{ time.start_at }}</p>
-                </div>
+                <p>{{ time.start_at }}</p>
               </li>
             </ul>
           </div>
@@ -137,12 +144,31 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Celebration Point</h3>
-      <ul>
-        <li *ngFor="let movie of newberryMoviesArr; let i = index;">
-          {{ movie.title }}
-        </li>
-      </ul>
     </header>
+    <div id ="celebration-accordian">
+        <!-- each movie will be a card -->
+       <div class="card" *ngFor="let movie of celebrationMoviesArr; let i = index;">
+         <!-- Movie title will go in card header -->
+         <div class="card-header" [attr.id]="'heading' + i">
+           <h5 class="mb-0">
+             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
+               {{ movie.title }}
+             </button>
+           </h5>
+         </div>
+         <!-- this shows all the times for each movie at the celebration theater -->
+         <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#celebration-accordion">
+           <div class="card-body">
+             <ul class="list-unstyled">
+               <li *ngFor="let time of celebrationMovieTimes[i].showtimes">
+                  <p>{{ time.start_at }}</p>
+               </li>
+             </ul>
+           </div>
+         </div>
+ 
+       </div>
+     </div>
   </section>
 
   <section class="butler-container" [ngStyle]="{'display':showButler}">
@@ -150,11 +176,30 @@
       <button class="btn btn-primary" (click)="doShowTheaters()">back</button>
       <h3>Butler Plaza</h3>
     </header>
-    <ul>
-      <li *ngFor="let movie of newberryMoviesArr; let i = index;">
-        {{ movie.title }}
-      </li>
-    </ul>
+    <div id ="butler-accordian">
+        <!-- each movie will be a card -->
+       <div class="card" *ngFor="let movie of butlerMoviesArr; let i = index;">
+         <!-- Movie title will go in card header -->
+         <div class="card-header" [attr.id]="'heading' + i">
+           <h5 class="mb-0">
+             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
+               {{ movie.title }}
+             </button>
+           </h5>
+         </div>
+         <!-- this shows all the times for each movie at the butler theater -->
+         <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#butler-accordion">
+           <div class="card-body">
+             <ul class="list-unstyled">
+               <li *ngFor="let time of butlerMovieTimes[i].showtimes">
+                  <p>{{ time.start_at }}</p>
+               </li>
+             </ul>
+           </div>
+         </div>
+ 
+       </div>
+     </div>
 
   </section>
 

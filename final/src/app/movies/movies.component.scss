@@ -5,8 +5,8 @@ section{
   display: flex;
   flex-direction: column;
 }
-.movie-container{
-  overflow: auto;
+.movie-container, .option-container, .movies-container, .butler-container, .newberry-container, .celebration-container{
+  overflow-y: scroll;
 }
 div {
   display: flex;
@@ -50,7 +50,6 @@ div {
 .option-button {
   border-radius: 30px;
   color: #fff;
-  background-color: #fcad26;
   padding: 1.5%;
   margin: 0 2%;
   text-align: center;
