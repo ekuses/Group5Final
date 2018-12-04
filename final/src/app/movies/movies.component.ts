@@ -146,7 +146,7 @@ export class MoviesComponent implements OnInit {
   doShowOptions() {
     this.showMovies = 'none';
     this.showTheaters = 'none';
-    this.showOptions = 'block';
+    this.showOptions = 'flex';
   }
 
   doShowNewberry(){
