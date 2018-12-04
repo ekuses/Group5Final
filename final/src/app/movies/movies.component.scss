@@ -7,6 +7,7 @@ section{
 }
 .movie-container, .option-container, .movies-container, .butler-container, .newberry-container, .celebration-container{
   overflow-y: auto;
+  overflow-x: hidden;
   height: 90.5vh;
 }
 div {
@@ -14,7 +15,12 @@ div {
   flex-direction: column;
   justify-content: center;
 }
-
+.card{
+  max-width: 100%
+}
+.overflow-wrap{
+  word-wrap: break-word;
+}
 .option-top {
   background: linear-gradient(rgba(0,0,0,0.85), rgba(255,255,255,0.10)),
       url(../../assets/images/theater.jpg);
@@ -26,7 +32,7 @@ div {
 }
 h5{
   button {
-    font-size : .9rem;
+    font-size : .95rem;
   }
 }
 

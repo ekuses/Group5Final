@@ -24,6 +24,7 @@ import { UserComponent } from './user/user.component';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from 'src/app/movies.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const AppRoutes: Routes = [
@@ -48,6 +49,7 @@ const AppRoutes: Routes = [
     UserComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
