@@ -47,6 +47,16 @@ export class MoviesComponent implements OnInit {
   showNewberry = 'none';
   showCelebration = 'none';
 
+  //Used for busy bar
+  butlerAvg = 0;
+  butlerBar = "danger";
+  celebrationAvg = 0;
+  celebrationBar= "";
+  royalParkAvg = 0;
+  royalParkBar= "";
+
+
+
   ngOnInit() {
     this.moviesService.getTheaterMovies(this.newberryID).subscribe(
       (response) => this.newberryMoviesArr = response.movies
@@ -184,5 +194,52 @@ export class MoviesComponent implements OnInit {
     this.showButler = 'block';
   }
 
+  setButlerAvg(avg) {
+    this.butlerAvg = avg;
+    if (avg >= 4)
+    {
+      this.butlerBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.butlerBar = "warning";
+    }
+    else
+    {
+      this.butlerBar = "success";
+    }
+  }
+
+  setCelebrationAvg(avg) {
+    this.celebrationAvg = avg;
+    if (avg >= 4)
+    {
+      this.celebrationBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.celebrationBar = "warning";
+    }
+    else
+    {
+      this.celebrationBar = "success";
+    }
+  }
+
+  setRoyalParkAvg(avg) {
+    this.royalParkAvg = avg;
+    if (avg >= 4)
+    {
+      this.royalParkBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.royalParkBar = "warning";
+    }
+    else
+    {
+      this.royalParkBar = "success";
+    }
+  }
 
 }

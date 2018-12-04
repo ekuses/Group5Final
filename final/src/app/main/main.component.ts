@@ -106,6 +106,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
     this.avgTh[0] = this.avgTh[0] / i;
     this.avgTh[0] = Math.round(this.avgTh[0] * 10) /  10;
     }
+    this.moviesComp.setButlerAvg(this.avgTh[0]);
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
@@ -126,6 +127,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
     this.avgTh[1] = this.avgTh[1] / i;
     this.avgTh[1] = Math.round(this.avgTh[1] * 10) /  10;
     }
+    this.moviesComp.setCelebrationAvg(this.avgTh[1]);
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
@@ -146,6 +148,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
     this.avgTh[2] = this.avgTh[2] / i;
     this.avgTh[2] = Math.round(this.avgTh[2] * 10) /  10;
     }
+    this.moviesComp.setRoyalParkAvg(this.avgTh[2]);
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
