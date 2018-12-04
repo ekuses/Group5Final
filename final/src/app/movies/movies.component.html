@@ -100,13 +100,23 @@
   </section>
 
   <section class="theaters-container" [ngStyle]="{'display':showTheaters}">
-    <header>
       <button class="btn btn-primary" (click)="doShowOptions()">back</button>
       <h3>Theaters</h3>
-      <button class="btn btn-primary" (click)="doShowNewberry()">Newberry</button>
-      <button class="btn btn-primary" (click)="doShowCelebration()">Celebration</button>
-      <button class="btn btn-primary" (click)="doShowButler()">Butler</button>
-    </header>
+      <div class="option-bottom" (click)="doShowNewberry()">
+          <article>
+              <button class="option-button btn btn-link" >Newberry</button>
+          </article>
+      </div>
+      <div class="option-bottom" (click)="doShowCelebration()">
+          <article>
+              <button class="option-button btn btn-link">Celebration</button>
+          </article>
+      </div>
+      <div class="option-bottom" (click)="doShowButler()">
+          <article>
+              <button class="option-button btn btn-link">Butler Plaza</button>
+          </article>
+      </div>
   </section>
 
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
