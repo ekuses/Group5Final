@@ -71,10 +71,6 @@ export class MainComponent implements OnInit {
           return query;
         }).valueChanges()
       ));
-      var a  = Number(Date.now());
-      var b  = Number(Date.now()) - 60000;
-    console.log("todays date = "  + a);
-    console.log("todays date minus a number = "  +b);
     this.theaterDb = afs.collection('theaters/').valueChanges();
     this.checkInButler = afs.collection('theaters/desc/Butler');
     this.checkInCelebration = afs.collection('theaters/desc/Celebration');
@@ -99,8 +95,11 @@ export class MainComponent implements OnInit {
     for(i = 0; i < x.length; ++i){
         this.avgTh[0] += Number(x[i].busy);
     }
+    if (this.avgTh[0] != 0)
+    {
     this.avgTh[0] = this.avgTh[0] / i;
     this.avgTh[0] = Math.round(this.avgTh[0] * 10) /  10;
+    }
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
@@ -116,8 +115,11 @@ export class MainComponent implements OnInit {
     for(i = 0; i < x.length; ++i){
         this.avgTh[1] += Number(x[i].busy);
     }
+    if (this.avgTh[1] != 0)
+    {
     this.avgTh[1] = this.avgTh[1] / i;
     this.avgTh[1] = Math.round(this.avgTh[1] * 10) /  10;
+    }
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
@@ -133,8 +135,11 @@ export class MainComponent implements OnInit {
     for(i = 0; i < x.length; ++i){
         this.avgTh[2] += Number(x[i].busy);
     }
+    if (this.avgTh[2] != 0)
+    {
     this.avgTh[2] = this.avgTh[2] / i;
     this.avgTh[2] = Math.round(this.avgTh[2] * 10) /  10;
+    }
     this.setMarkers(this.map);},
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
