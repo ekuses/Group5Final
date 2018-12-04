@@ -7,6 +7,7 @@ section{
 }
 .movie-container, .option-container, .movies-container, .butler-container, .newberry-container, .celebration-container{
   overflow-y: scroll;
+  height: 90.5vh;
 }
 div {
   display: flex;
