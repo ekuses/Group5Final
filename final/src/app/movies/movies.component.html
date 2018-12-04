@@ -39,7 +39,7 @@
       <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
       <h3>Movies</h3>
     </header>
-    <ngb-accordion [closeOthers]="true">
+    <ngb-accordion>
         <ngb-panel *ngFor="let movie of allMoviesArr; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
             <span class="overflow-wrap">
@@ -51,44 +51,42 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
+            <h4>Butler</h4>
             <ul class="list-group">
-              <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
-                <div>
-                  {{ time.start_at }}
+              <li *ngFor="let time of allMovieTimes[i].showtimes" class="list-group-item">
+                <div *ngIf="time.cinema_id == 42490">
+                  <p>{{ time.start_at }}</p>
                 </div>
               </li>
             </ul>
+            <h4>Newberry</h4>
+            <ul class="list-group">
+              <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
+                <div *ngIf="time.cinema_id == 42506">
+                  <p>{{ time.start_at }}</p>
+                </div>
+              </li>
+            </ul>
+            <h4>Celebration</h4>
+            <ul class="list-group">
+              <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
+                <div *ngIf="time.cinema_id == 42490">
+                  <p>{{ time.start_at }}</p>
+                </div>
+              </li>
+            </ul>
+              <ul class="list-group">
+                <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
+                  <div>
+                    {{ time.start_at }}
+                  </div>
+                </li>
+              </ul>
   
               
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
-      <!-- <div class="card-body">
-          <h4>Butler</h4>
-          <ul>
-            <li *ngFor="let time of allMovieTimes[i].showtimes">
-              <div *ngIf="time.cinema_id == 42490">
-                <p>{{ time.start_at }}</p>
-              </div>
-            </li>
-          </ul>
-          <h4>Newberry</h4>
-          <ul>
-            <li *ngFor="let time of allMovieTimes[i].showtimes">
-              <div *ngIf="time.cinema_id == 42506">
-                <p>{{ time.start_at }}</p>
-              </div>
-            </li>
-          </ul>
-          <h4>Celebration</h4>
-          <ul>
-            <li *ngFor="let time of allMovieTimes[i].showtimes">
-              <div *ngIf="time.cinema_id == 42490">
-                <p>{{ time.start_at }}</p>
-              </div>
-            </li>
-          </ul>
-        </div> -->
 
 
   </section>
