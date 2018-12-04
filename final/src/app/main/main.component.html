@@ -22,7 +22,7 @@
           </ul>
           <ul class="navbar-nav ml-auto">
               <li class="nav-item align-right">
-                <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button> 
+                <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button>
               </li>
           </ul>
           <!-- <form class="form-inline my-2 my-lg-0">
@@ -52,8 +52,7 @@
 <div class="modal" id="testPopup" [ngStyle]="{'display':showCheckin}">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close" (click)="hideCheckIn()" >&times;</span>
-      <h2>Check in with Crowdy!</h2>
+      <h2 style="text-align: center;">Check in with Crowdy!</h2>
     </div>
     <div class="modal-body">
       <div action=" /action_page.php" class="form-group">
@@ -62,6 +61,7 @@
         <select #theaterOption name="theatre" #theaterChosen>
             <option *ngFor="let theater of theaterDb | async" [value]="theater.name">{{theater.name}}</option>
         </select>
+        <br>
         <label for="busyLevel">How busy this Theatre?</label>
         <select #busyOption class="" name="busy">
           <option [value]="1">1</option>
