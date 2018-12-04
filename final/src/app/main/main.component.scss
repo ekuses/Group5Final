@@ -10,6 +10,19 @@
 .noPadding {
   padding: 0 !important;
 }
+.padding-0{
+  padding-right:0;
+  padding-left:0;
+}
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
 .botBorder {
   border-bottom: 1px;
   border-color: #222;
