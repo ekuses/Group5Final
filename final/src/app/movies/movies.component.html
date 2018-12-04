@@ -67,6 +67,7 @@
                 </div>
               </li>
             </ul>
+<<<<<<< HEAD
             <h4>Celebration</h4>
             <ul class="list-group">
               <li *ngFor="let time of allMovieTimes[i]" class="list-group-item">
@@ -84,6 +85,10 @@
               </ul>
   
               
+=======
+
+
+>>>>>>> f7ab9113acba00d0a4e179e2e9bdd0043b300f5c
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
@@ -120,7 +125,7 @@
                     <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded at this time">
                   </div>
                 </div>
-              
+
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
@@ -143,11 +148,18 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
-              <ul class="list-group">
-                  <li *ngFor="let time of celebrationMovieTimes[i]" class="list-group-item">
-                    {{ time.start_at }}
-                  </li>
-                </ul>
+                <div style="flex-direction: row;">
+                    <div style="flex:1;">
+                      <ul class="list-group">
+                        <li *ngFor="let time of celebrationMovieTimes[i]" class="list-group-item">
+                          {{ time.start_at }}
+                        </li>
+                      </ul>
+                    </div>
+                    <div style="flex:1;">
+                      <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded at this time">
+                    </div>
+                  </div>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
@@ -170,11 +182,18 @@
             </span>
           </ng-template>
           <ng-template ngbPanelContent>
-              <ul class="list-group">
-                  <li *ngFor="let time of butlerMovieTimes[i]" class="list-group-item">
-                    {{ time.start_at }}
-                  </li>
-                </ul>
+                <div style="flex-direction: row;">
+                    <div style="flex:1;">
+                      <ul class="list-group">
+                        <li *ngFor="let time of butlerMovieTimes[i]" class="list-group-item">
+                          {{ time.start_at }}
+                        </li>
+                      </ul>
+                    </div>
+                    <div style="flex:1;">
+                      <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded at this time">
+                    </div>
+                  </div>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
