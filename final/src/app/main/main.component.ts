@@ -161,7 +161,7 @@ export class MainComponent implements OnInit {
 					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
 						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
 						'<button type="button" class="btn btn-info btn-block" >Showtimes</button> '+
-						'<button type="button" class="btn btn-info btn-block" >Navigate</button> '+
+						'<button type="button" class="btn btn-info btn-block" id="navigate">Navigate</button> '+
 					'</div>'+
 				'</div>' ; //String(theater[0]); //we can change this to anything including html5
         var tstring = String(theater[0]);
@@ -172,10 +172,12 @@ export class MainComponent implements OnInit {
           title: tstring,
         });
 
+        var myloc = 0;
+
         navigator.geolocation.getCurrentPosition(function(position) {
             var im = 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png';
             var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            
+            myloc = geolocate;
             var marker = new google.maps.Marker({
                 map: map,
                 position: geolocate,
@@ -193,6 +195,7 @@ export class MainComponent implements OnInit {
         });
 
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
+
           document.getElementById("chekin").addEventListener("click", function() {
 
           var element = document.getElementById("chekin").style.display = "none";
@@ -220,6 +223,30 @@ export class MainComponent implements OnInit {
                   document.getElementById("sent").style.display = "block";
               });
           });
+
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;
+          var latit = marker.getPosition().lat();
+          var longit = marker.getPosition().lng();
+          document.getElementById("navigate").addEventListener("click", function() {
+
+            directionsService.route({
+                origin: myloc,
+                destination: {
+                    lat: latit,
+                    lng: longit
+                },
+                travelMode: 'DRIVING'
+            },function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+
+          });
+
       });
 
         google.maps.event.addListener(marker, 'click', function(content){
