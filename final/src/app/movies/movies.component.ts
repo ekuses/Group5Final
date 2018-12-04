@@ -90,12 +90,17 @@ export class MoviesComponent implements OnInit {
         timeOnly = hours + rest + 'am';
       }
       if(showdate != today) {
-        showtimes.splice(i, 1);
+        if(showtimes.length === 1){
+          showtimes[0].start_at = 'This movie is not playing today.';
+        } else {
+          showtimes.splice(i, 1);
+        }
       } else {
         showtimes[i].start_at = timeOnly;
       }
       
     }
+
     return showtimes;
 
   }
