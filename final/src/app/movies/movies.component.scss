@@ -24,6 +24,11 @@ div {
   padding: 1rem;
   transition: all .2s ease-in-out;
 }
+h5{
+  button {
+    font-size : .9rem;
+  }
+}
 
 .option-bottom {
   background: linear-gradient(rgba(0,0,0,0.85), rgba(164,222,102, 0.10)),
