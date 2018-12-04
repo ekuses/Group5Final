@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
   moviesRef : AngularFirestoreDocument<{test: string}>;
   nameFilter$: BehaviorSubject<string|null>;
   moviesRef2 : AngularFirestoreCollection<Movie>;
-  avgTh[] = [0,0,0];
+  avgTh = [0,0,0];
   
 
 
@@ -59,7 +59,7 @@ export class MainComponent implements OnInit {
 
   constructor(afs: AngularFirestore, public afAuth: AngularFireAuth){
     this.nameFilter$ = new BehaviorSubject(null);
-    this.tableshow = true;
+    this.tableshow = "none";
     //this.moviesDb = db.collection('movies', ref => ref.where('name', '>=', this.searchBy)).valueChanges();
 
     this.moviesDb = this.nameFilter$.pipe(

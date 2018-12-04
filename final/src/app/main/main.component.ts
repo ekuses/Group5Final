@@ -148,6 +148,7 @@ export class MainComponent implements OnInit {
       ];
 
 
+
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
         var avg = this.avgTh[i];
@@ -169,6 +170,26 @@ export class MainComponent implements OnInit {
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: tstring,
+        });
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var im = 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png';
+            var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            
+            var marker = new google.maps.Marker({
+                map: map,
+                position: geolocate,
+                //icon: im find the right image
+                icon: {
+                  fillColor: 'blue',
+                  strokeColor: 'blue',
+                  path: google.maps.SymbolPath.CIRCLE,
+                  scale: 5
+                }
+            });
+            
+            map.setCenter(geolocate);
+            
         });
 
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
