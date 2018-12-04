@@ -42,13 +42,15 @@
     <figure *ngFor="let movie of allMoviesArr">
         <img src="{{ movie.poster_image_thumbnail }}" class="fullsize" alt="this image could not be loaded at this time">
         <figcaption>{{ movie.title }}</figcaption>
-      </figure> 
+      </figure>
   </section>
 
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Royal Park</h3>
+      <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="this.royalParkAvg*20">{{royalParkAvg}}</ngb-progressbar></p>
+
     </header>
     <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of newberryMoviesArr; let i = index;" id="static-{{i}}" >
@@ -84,6 +86,7 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Celebration Point</h3>
+      <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="this.celebrationAvg*20">{{celebrationAvg}}</ngb-progressbar></p>
     </header>
     <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of celebrationMoviesArr; let i = index;" id="static-{{i}}" >
@@ -118,6 +121,7 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Butler Plaza</h3>
+      <p><ngb-progressbar type="{{this.butlerBar}}" [value]="this.butlerAvg*20">{{butlerAvg}}</ngb-progressbar></p>
     </header>
     <ngb-accordion [closeOthers]="true">
       <ngb-panel *ngFor="let movie of butlerMoviesArr; let i = index;" id="static-{{i}}" >

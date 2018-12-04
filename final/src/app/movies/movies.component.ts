@@ -47,6 +47,16 @@ export class MoviesComponent implements OnInit {
   showNewberry = 'none';
   showCelebration = 'none';
 
+  //Used for busy bar
+  butlerAvg = 0;
+  butlerBar = "danger";
+  celebrationAvg = 0;
+  celebrationBar= "";
+  royalParkAvg = 0;
+  royalParkBar= "";
+
+
+
   ngOnInit() {
     this.moviesService.getTheaterMovies(this.newberryID).subscribe(
       (response) => this.newberryMoviesArr = response.movies
@@ -69,7 +79,7 @@ export class MoviesComponent implements OnInit {
     var yyyy = today.getFullYear();
     if(dd<10) {
       dd = '0'+dd
-    } 
+    }
     if(mm<10) {
       mm = '0'+mm
     }
@@ -98,7 +108,7 @@ export class MoviesComponent implements OnInit {
       } else {
         showtimes[i].start_at = timeOnly;
       }
-      
+
     }
 
     return showtimes;
@@ -108,7 +118,7 @@ export class MoviesComponent implements OnInit {
   doShowMovies() {
     //loop through the movies
     for(var movie of this.allMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromLocation(movie.id).subscribe(
         (response) => this.allMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -152,7 +162,7 @@ export class MoviesComponent implements OnInit {
   doShowNewberry(){
     //loop through the movies
     for(var movie of this.newberryMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.newberryID, movie.id).subscribe(
         (response) => this.newberryMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -163,7 +173,7 @@ export class MoviesComponent implements OnInit {
   doShowCelebration(){
     //loop through the movies
     for(var movie of this.celebrationMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.celebrationID, movie.id).subscribe(
         (response) => this.celebrationMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -175,7 +185,7 @@ export class MoviesComponent implements OnInit {
   doShowButler(){
     //loop through the movies
     for(var movie of this.butlerMoviesArr){
-      //fetch showtimes 
+      //fetch showtimes
       this.moviesService.getShowtimesFromTheater(this.butlerID, movie.id).subscribe(
         (response) => this.butlerMovieTimes.push(this.isToday(response.showtimes))
       );
@@ -184,5 +194,52 @@ export class MoviesComponent implements OnInit {
     this.showButler = 'block';
   }
 
+  setButlerAvg(avg) {
+    this.butlerAvg = avg;
+    if (avg >= 4)
+    {
+      this.butlerBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.butlerBar = "warning";
+    }
+    else
+    {
+      this.butlerBar = "success";
+    }
+  }
+
+  setCelebrationAvg(avg) {
+    this.celebrationAvg = avg;
+    if (avg >= 4)
+    {
+      this.celebrationBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.celebrationBar = "warning";
+    }
+    else
+    {
+      this.celebrationBar = "success";
+    }
+  }
+
+  setRoyalParkAvg(avg) {
+    this.royalParkAvg = avg;
+    if (avg >= 4)
+    {
+      this.royalParkBar = "danger";
+    }
+    else if (avg >= 3)
+    {
+      this.royalParkBar = "warning";
+    }
+    else
+    {
+      this.royalParkBar = "success";
+    }
+  }
 
 }
