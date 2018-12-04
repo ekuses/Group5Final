@@ -162,9 +162,8 @@ export class MainComponent implements OnInit {
         var avg = this.avgTh[i];
         var content = '<div class="maprow" id="popup" >'+
 					'<div id="c1" style="float: left; width: 70%;">'+
-						'<h2 style="display: inline-block;">'+theater[0]+' Today\'s busy: '+this.avgTh[i]+'/5</h2>'+
-						'<p id=teaTime [value]="tstring">'+theater[1]+'</p>'+
-						'<p >graph of busy times for this day?</p>'+
+						'<h2 style="display: inline-block;">'+theater[0]+'</h2>'+
+						'<h4>Today\'s busy level: '+this.avgTh[i]+'/5</h4>'+
 					'</div>'+
 					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
 						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
