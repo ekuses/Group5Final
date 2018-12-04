@@ -36,7 +36,7 @@ export class MainComponent implements OnInit {
   nameFilter$: BehaviorSubject<string|null>;
   moviesRef2 : AngularFirestoreCollection<Movie>;
   avgTh = [0,0,0];
-  
+
 
 
 
@@ -175,7 +175,7 @@ export class MainComponent implements OnInit {
         navigator.geolocation.getCurrentPosition(function(position) {
             var im = 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png';
             var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            
+
             var marker = new google.maps.Marker({
                 map: map,
                 position: geolocate,
@@ -187,9 +187,9 @@ export class MainComponent implements OnInit {
                   scale: 5
                 }
             });
-            
+
             map.setCenter(geolocate);
-            
+
         });
 
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
@@ -215,9 +215,10 @@ export class MainComponent implements OnInit {
           '<div id = "sent" style="display:none">'+
           'Checked In!</div>'
               );
-              document.getElementById("send").addEventListener("click", function() {
+                  document.getElementById("send").addEventListener("click", function() {
                   document.getElementById("pop").style.display = "none";
                   document.getElementById("sent").style.display = "block";
+                  self.submitCheckin(infowindow.position, document.getElementById("busy"));
               });
           });
       });
@@ -243,15 +244,15 @@ export class MainComponent implements OnInit {
     }
 
     public checkInRoyalParkf(busyValue){
-      this.checkInRoyalPark.add({ busy:  busyValue });
+      this.checkInRoyalPark.add({ busy:  busyValue, date: Date.now() });
     }
 
     public checkInButlerf(busyValue){
-      this.checkInButler.add({ busy: busyValue });
+      this.checkInButler.add({ busy: busyValue, date: Date.now()  });
     }
 
     public checkInCelebrationf(busyValue){
-      this.checkInCelebration.add({ busy:  busyValue  });
+      this.checkInCelebration.add({ busy:  busyValue, date: Date.now()   });
     }
 
     public submitCheckin(theatre, busyValue)
