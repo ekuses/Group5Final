@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MoviesService } from 'src/app/movies.service';
 import { getComponentViewByInstance } from '@angular/core/src/render3/context_discovery';
+import { MoviesComponent } from '../movies/movies.component';
 
 export interface Movie {
   name: string;
@@ -19,7 +20,9 @@ declare var google;
   styleUrls: ['./main.component.scss']
 })
 
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit  {
+  @ViewChild(MoviesComponent)
+  private moviesComp: MoviesComponent;
   @ViewChild('gmap') gmapElement: any;
   map;
   moviesDb: Observable<Movie[]>;
@@ -38,6 +41,9 @@ export class MainComponent implements OnInit {
   avgTh = [0,0,0];
 
 
+  ngAfterViewInit() {
+    //this.MoviesComponent = this.childReference.exampleChild;
+  }
 
 
   ngOnInit() {
@@ -167,7 +173,7 @@ export class MainComponent implements OnInit {
 					'</div>'+
 					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
 						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
-						'<button type="button" class="btn btn-info btn-block" >Showtimes</button> '+
+						'<button type="button" class="btn btn-info btn-block" id = "showtimez">Showtimes</button> '+
 						'<button type="button" class="btn btn-info btn-block" id="navigate">Navigate</button> '+
 					'</div>'+
 				'</div>' ; //String(theater[0]); //we can change this to anything including html5
@@ -199,6 +205,29 @@ export class MainComponent implements OnInit {
 
             map.setCenter(geolocate);
 
+        });
+
+        google.maps.event.addListener(infowindow, 'domready', function(tstring) {
+
+          document.getElementById("showtimez").addEventListener("click", function() {
+
+            self.moviesComp.doShowTheaters();
+
+
+
+            if (infowindow.position.toString() == "(29.6539, -82.3802)")
+            {
+              self.moviesComp.doShowNewberry();
+            }
+            else if (infowindow.position.toString() == "(29.6272, -82.37720000000002)")
+            {
+              self.moviesComp.doShowButler();
+            }
+            else if (infowindow.position.toString() == "(29.6237, -82.39530000000002)")
+            {
+              self.moviesComp.doShowCelebration();
+            }
+          });
         });
 
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
