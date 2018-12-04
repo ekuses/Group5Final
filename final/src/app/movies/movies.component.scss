@@ -47,7 +47,11 @@ div {
   font-family: 'Pacifico', cursive;
   font-size: 6rem;
 }
-
+.card-body img {
+  float: right;
+  max-width: 100%;
+    height: auto;
+}
 .option-button {
   border-radius: 30px;
   color: #fff;

@@ -132,18 +132,22 @@
           <h5 class="mb-0">
             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
               {{ movie.title }}
-              <!-- <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded"> -->
             </button>
           </h5>
         </div>
         <!-- this shows all the times for each movie at the newberry theater -->
         <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
           <div class="card-body">
-            <ul class="list-unstyled">
-              <li *ngFor="let time of newberryMovieTimes[i]">
-                {{ time.start_at }}
-              </li>
-            </ul>
+            <div style="width: 60%; float:left">
+              <ul class="list-unstyled">
+                <li *ngFor="let time of newberryMovieTimes[i]">
+                  {{ time.start_at }}
+                </li>
+              </ul>
+            </div>
+            <div style="width: 40%; float:right">
+              <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded">
+            </div>
           </div>
         </div>
 
@@ -161,11 +165,11 @@
        <div class="card" *ngFor="let movie of celebrationMoviesArr; let i = index;">
          <!-- Movie title will go in card header -->
          <div class="card-header" [attr.id]="'heading' + i">
-           <h5 class="mb-0">
+           <h6 class="mb-0">
              <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
                {{ movie.title }}
              </button>
-           </h5>
+           </h6>
          </div>
          <!-- this shows all the times for each movie at the celebration theater -->
          <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#celebration-accordion">
