@@ -57,12 +57,12 @@
     <div class="modal-body">
       <div action=" /action_page.php" class="form-group">
         <br>
-        <label for="theatre"> Theatre</label>
+        <label for="theatre"> Theatre </label>
         <select #theaterOption name="theatre" #theaterChosen>
             <option *ngFor="let theater of theaterDb | async" [value]="theater.name">{{theater.name}}</option>
         </select>
         <br>
-        <label for="busyLevel">How busy this Theatre?</label>
+        <label for="busyLevel">How busy this Theatre? </label>
         <select #busyOption class="" name="busy">
           <option [value]="1">1</option>
           <option [value]="2">2</option>
@@ -86,7 +86,6 @@
   <div class="modal-content">
     <div class="text-center border border-light p-5">
       <div class="modal-header">
-        <span class="close" (click)=hidefeedback() >&times;</span>
         <h2>Contact Us</h2>
       </div>
       <div class="modal-body">
