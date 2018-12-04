@@ -137,15 +137,15 @@
         </div>
         <!-- this shows all the times for each movie at the newberry theater -->
         <div [attr.id]="'collapse'+i" class="collapse show" [attr.aria-labelledby]="'heading' + i" data-parent="#newberry-accordion">
-          <div class="card-body">
-            <div style="width: 60%; float:left">
+          <div style="flex-direction: row;">
+            <div style="flex:1;">
               <ul class="list-unstyled">
                 <li *ngFor="let time of newberryMovieTimes[i]">
                   {{ time.start_at }}
                 </li>
               </ul>
             </div>
-            <div style="width: 40%; float:right">
+            <div style="flex:1;">
               <img src="{{ movie.poster_image_thumbnail }}" alt="img could not be loaded">
             </div>
           </div>

@@ -53,9 +53,8 @@ h5{
   font-size: 6rem;
 }
 .card-body img {
-  float: right;
-  max-width: 100%;
-    height: auto;
+  flex-direction: row;
+
 }
 .option-button {
   border-radius: 30px;
