@@ -1,7 +1,7 @@
 section{
   height: 100%;
 }
-.option-container {
+.option-container, .theater-container {
   display: flex;
   flex-direction: column;
 }
@@ -30,6 +30,15 @@ div {
   padding: 1rem;
   transition: all .2s ease-in-out;
 }
+.movie-option {
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(255,255,255,0.10)),
+      url(../../assets/images/theater-stage.jpg);
+  background-size: cover;
+  background-position: center;
+  flex-basis: 33%;
+  padding: 1rem;
+  transition: all .2s ease-in-out;
+}
 h5{
   button {
     font-size : .95rem;
@@ -50,7 +59,7 @@ h5{
   transition: all .2s ease-in-out;
 }
 
-.option-top:hover, .option-bottom:hover {
+.option-top:hover, .option-bottom:hover, .movie-option:hover {
   transform: scale(0.95);
 }
 

@@ -17,20 +17,22 @@
   <section class="theaters-container" [ngStyle]="{'display':showTheaters}">
       <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
       <h3>Theaters</h3>
-      <div class="option-bottom" (click)="doShowNewberry()">
-          <article>
-              <button class="option-button btn btn-link" >Royal Park</button>
-          </article>
-      </div>
-      <div class="option-bottom" (click)="doShowCelebration()">
-          <article>
-              <button class="option-button btn btn-link">Celebration</button>
-          </article>
-      </div>
-      <div class="option-bottom" (click)="doShowButler()">
-          <article>
-              <button class="option-button btn btn-link">Butler Plaza</button>
-          </article>
+      <div class="theater-container">
+          <div class="movie-option" (click)="doShowNewberry()">
+              <article>
+                  <button class="option-button btn btn-link" >Royal Park</button>
+              </article>
+          </div>
+          <div class="movie-option" (click)="doShowCelebration()">
+              <article>
+                  <button class="option-button btn btn-link">Celebration</button>
+              </article>
+          </div>
+          <div class="movie-option" (click)="doShowButler()">
+              <article>
+                  <button class="option-button btn btn-link">Butler Plaza</button>
+              </article>
+          </div>
       </div>
   </section>
 
@@ -52,8 +54,9 @@
       <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="this.royalParkAvg*20">{{royalParkAvg}}</ngb-progressbar></p>
 
     </header>
-    <ngb-accordion [closeOthers]="true">
-        <ngb-panel *ngFor="let movie of newberryMoviesArr; let i = index;" id="static-{{i}}" >
+      <input [(ngModel)]="searchText" placeholder="search by title">
+      <ngb-accordion [closeOthers]="true">
+        <ngb-panel *ngFor="let movie of newberryMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
             <span class="overflow-wrap">
               <h5 class="mb-0 pl-0">
@@ -88,8 +91,9 @@
       <h3>Celebration Point</h3>
       <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="this.celebrationAvg*20">{{celebrationAvg}}</ngb-progressbar></p>
     </header>
+    <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
-        <ngb-panel *ngFor="let movie of celebrationMoviesArr; let i = index;" id="static-{{i}}" >
+        <ngb-panel *ngFor="let movie of celebrationMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
             <span class="overflow-wrap">
               <h5 class="mb-0 pl-0">
@@ -123,8 +127,9 @@
       <h3>Butler Plaza</h3>
       <p><ngb-progressbar type="{{this.butlerBar}}" [value]="this.butlerAvg*20">{{butlerAvg}}</ngb-progressbar></p>
     </header>
+    <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
-      <ngb-panel *ngFor="let movie of butlerMoviesArr; let i = index;" id="static-{{i}}" >
+      <ngb-panel *ngFor="let movie of butlerMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
         <ng-template ngbPanelTitle class="overflow-wrap">
           <span class="overflow-wrap">
             <h5 class="mb-0 pl-0">

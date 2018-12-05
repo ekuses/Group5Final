@@ -25,6 +25,7 @@ import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from 'src/app/movies.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FilterPipe} from './filter.pipe'
 
 
 const AppRoutes: Routes = [
@@ -39,6 +40,7 @@ const AppRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
     HeaderComponent,
     MapComponent,
     MoviesComponent,

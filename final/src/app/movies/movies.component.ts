@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/movies.service';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
+import {FilterPipe} from '../filter.pipe'
 
 @Component({
   selector: 'app-movies',
