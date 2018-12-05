@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from 'src/app/movies.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FilterPipe} from './filter.pipe'
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 const AppRoutes: Routes = [
@@ -53,6 +54,7 @@ const AppRoutes: Routes = [
   imports: [
     NgbModule,
     BrowserModule,
+    MDBBootstrapModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,

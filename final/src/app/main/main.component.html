@@ -1,12 +1,12 @@
 
 <!-- Grid -->
-<div class="container-fluid noPadding hidex">
+<div class="container-fluid noPadding hidex" style="background-color:rgba(255, 255, 255, 0.1);">
 
 
   <!-- Header -->
   <div class="row noPadding botBorder">
     <div class="header col-12 noPadding">
-      <nav id="header"class="navbar navbar-expand-lg navbar-primary">
+      <nav id="header" class="navbar navbar-expand-lg navbar-dark" style="background-color:#4285F4;">      
         <a class="navbar-brand">
           <!-- <h1>Crowdy</h1> -->
           <h3>Crowdy</h3>
@@ -17,15 +17,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <button class="btn btn-outline-primary padding-right" type="button" (click)="checkIn()">Check In</button>
+              <button class="btn btn-primary padding-right" type="button" (click)="checkIn()">Check In</button>
             </li>
             <li class="nav-item ml-1">
-              <button class="btn btn-outline-danger" type="button" (click)="logout()">Sign Out</button>
+              <button class="btn btn-danger" type="button" (click)="logout()">Sign Out</button>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
               <li class="nav-item align-right">
-                <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button>
+                <button class="btn btn-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button>
                 <!-- <button class="btn btn-outline-primary" (click)="open(content)">Contact Us!</button> -->
               </li>
           </ul>
@@ -38,7 +38,7 @@
   <div class="row no-gutter">
 
     <!-- Movies -->
-    <app-movies class="movies col-sm-3 "></app-movies>
+    <app-movies class="movies col-sm-3" style="background-color:rgba(255, 255, 255, 0.1);"></app-movies>
 
 
     <!-- Map -->
