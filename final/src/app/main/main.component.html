@@ -120,27 +120,27 @@
       </div>
       <div class="modal-body">
         <!-- Name -->
-        <br><input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+        <br><input #feedbackName type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
         <!-- Email -->
-        <br><input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <br><input #feedbackEmail type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
         <!-- Subject -->
         <br><label>Subject</label>
-        <select class="browser-default custom-select mb-4">
-          <option value="" disabled>Choose option</option>
-          <option value="1" selected>Feedback</option>
-          <option value="2">Report a bug</option>
-          <option value="3">Feature request</option>
+        <select #feedbackSubject class="browser-default custom-select mb-4">
+          <option [value]="" disabled>Choose option</option>
+          <option [value]="1" selected>Feedback</option>
+          <option [value]="2">Report a bug</option>
+          <option [value]="3">Feature request</option>
         </select>
         <br>
         <!-- Message -->
         <div class="form-group">
-          <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+          <textarea #feedbackInfo class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
         </div>
       </div>
       <!-- Send button -->
       <div  class="modal-footer">
         <button class="btn btn-info " type="close" (click)=hidefeedback()>Cancel</button>
-        <button class="btn btn-info " type="submit" (click)=sendfeedback()>Send</button>
+        <button class="btn btn-info " (click)="feedBackDb(feedbackName.value,feedbackEmail.value,feedbackSubject.value,feedbackInfo.value)">Send</button>
       </div>
     </div>
   </div>
