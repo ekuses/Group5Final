@@ -1,10 +1,16 @@
 section{
   height: 100%;
 }
-.option-container, .theater-container {
+.theater-container {
+  display: flex;
+  height: 85.2vh;
+}
+
+.option-container{
   display: flex;
   flex-direction: column;
 }
+
 .movie-container, .option-container, .movies-container, .butler-container, .newberry-container, .celebration-container{
   overflow-y: auto;
   overflow-x: hidden;
@@ -35,7 +41,7 @@ div {
       url(../../assets/images/theater-stage.jpg);
   background-size: cover;
   background-position: center;
-  flex-basis: 33%;
+  flex:1;
   padding: 1rem;
   transition: all .2s ease-in-out;
 }

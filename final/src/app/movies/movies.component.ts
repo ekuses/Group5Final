@@ -151,7 +151,7 @@ export class MoviesComponent implements OnInit {
     this.showButler = 'none';
     this.showCelebration = 'none';
     this.showNewberry = 'none';
-    this.showTheaters = 'block';
+    this.showTheaters = 'flex';
   }
 
   doShowOptions() {

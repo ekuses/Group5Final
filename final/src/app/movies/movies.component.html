@@ -14,10 +14,10 @@
       </div>
   </section>
 
-  <section class="theaters-container" [ngStyle]="{'display':showTheaters}">
-      <button class="btn btn-primary" (click)="doShowOptions()">Back</button>
-      <h3>Theaters</h3>
-      <div class="theater-container">
+  <section class="theaters-container" style = "display: flex; flex-direction: column; align-content: stretch;" [ngStyle]="{'display':showTheaters}">
+      <button class="btn btn-primary" style = "flex:1;" (click)="doShowOptions()">Back</button>
+      <h3 style= "flex:1">Theaters</h3>
+      <div class="theater-container" style = "display:flex; flex-direction: column; flex:12;">
           <div class="movie-option" (click)="doShowNewberry()">
               <article>
                   <button class="option-button btn btn-link" >Royal Park</button>
