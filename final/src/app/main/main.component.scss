@@ -1,8 +1,8 @@
 .movies {
-  height: 92.5vh;
+  height: 91vh;
 }
 .map {
-  height: 90.5vh;
+  height: 91vh;
 }
 .navbar{
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
@@ -32,6 +32,7 @@
 }
 .hidex{
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .modal-backdrop.fade
 {
