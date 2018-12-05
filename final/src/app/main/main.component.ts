@@ -335,8 +335,8 @@ export class MainComponent implements OnInit, AfterViewInit  {
       this.showCheckin="none";
     }
 
-    public feedBackDb(){
-      this.feedBackRef.add({ busy:  busyValue, date: Date.now() });
+    public feedBackDb(name,email,subject,info){
+      this.feedBackRef.add({ name:  name, email: email, subject: subject, info: info, date: Date.now() });
     }
 
     public checkInRoyalParkf(busyValue){
