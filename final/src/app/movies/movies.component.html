@@ -15,7 +15,7 @@
   </section>
 
   <section class="theaters-container" style = "display: flex; flex-direction: column; align-content: stretch;" [ngStyle]="{'display':showTheaters}">
-      <button class="btn btn-primary" style = "flex:1;" (click)="doShowOptions()">Back</button>
+      <button class="btn btn-primary" style = "flex:1; align-self: flex-start;" (click)="doShowOptions()">Back</button>
       <h3 style= "flex:1">Theaters</h3>
       <div class="theater-container" style = "display:flex; flex-direction: column; flex:12;">
           <div class="movie-option" (click)="doShowNewberry()">
