@@ -49,8 +49,11 @@
 
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
     <header class="mt-2">
-      <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
-      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+        <input class="form-control ml-4" type="search" placeholder="Search by title" aria-label="Search"[(ngModel)]="searchText">
+      </form>
+      <!-- <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title"> -->
       <h3>Royal Park</h3>
       <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="(this.royalParkAvg-1)*25">{{royalParkAvg}}</ngb-progressbar></p>
 
@@ -87,8 +90,10 @@
 
   <section class="celebration-container" [ngStyle]="{'display':showCelebration}">
     <header class="mt-2">
-      <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
-      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+        <input class="form-control ml-4" type="search" placeholder="Search by title" aria-label="Search"[(ngModel)]="searchText">
+      </form>
       <h3>Celebration Point</h3>
       <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="(this.celebrationAvg-1)*25">{{celebrationAvg}}</ngb-progressbar></p>
     </header>
@@ -123,8 +128,10 @@
 
   <section class="butler-container" [ngStyle]="{'display':showButler}">
     <header class="mt-2">
-      <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
-      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+        <input class="form-control ml-4" type="search" placeholder="Search by title" aria-label="Search"[(ngModel)]="searchText">
+      </form>
       <h3>Butler Plaza</h3>
       <p><ngb-progressbar type="{{this.butlerBar}}" [value]="(this.butlerAvg-1)*25">{{butlerAvg}}</ngb-progressbar></p>
     </header>
