@@ -2,7 +2,9 @@
 <!-- Grid -->
 <div class="container-fluid noPadding hidex">
 
-
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"[(ngModel)]="searchBy" (ngModelChange)= "filterByName()">
+      </form> -->
   <!-- Header -->
   <div class="row noPadding botBorder">
     <div class="header col-12 noPadding">
@@ -25,13 +27,10 @@
           </ul>
           <ul class="navbar-nav ml-auto">
               <li class="nav-item align-right">
-                <!-- <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button> -->
-                <button class="btn btn-outline-primary" (click)="open(content)">Contact Us!</button>
+                <button class="btn btn-outline-primary padding-right" type="button" (click)="showfeedback()">Contact Us!</button>
+                <!-- <button class="btn btn-outline-primary" (click)="open(content)">Contact Us!</button> -->
               </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"[(ngModel)]="searchBy" (ngModelChange)= "filterByName()">
-          </form>
         </div>
       </nav>
     </div>
