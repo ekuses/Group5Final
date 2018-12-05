@@ -337,6 +337,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
 
     public feedBackDb(name,email,subject,info){
       this.feedBackRef.add({ name:  name, email: email, subject: subject, info: info, date: Date.now() });
+      this.hidefeedback();
     }
 
     public checkInRoyalParkf(busyValue){
@@ -374,7 +375,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
 		  var x = document.getElementById('feedbackform');
 		  x.style.display = "block";
 		}
-		hidefeedback() {
+		public hidefeedback() {
 			var modal = document.getElementById('feedbackform');
 			modal.style.display = "none";
 		}
