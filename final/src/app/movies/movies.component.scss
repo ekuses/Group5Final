@@ -9,6 +9,7 @@ section{
 .option-container{
   display: flex;
   flex-direction: column;
+  background-color:rgba(255, 255, 255, 0.1);
 }
 
 .movie-container, .option-container, .movies-container, .butler-container, .newberry-container, .celebration-container{
@@ -52,8 +53,9 @@ div {
   align-items: center;
 }
 h5{
-  button {
-    font-size : .95rem;
+  button.break-word {
+    white-space: normal !important;
+    width: 100% !important;
   }
 }
 .fullsize{
@@ -92,7 +94,7 @@ h5{
 }
 .option-button {
   border-radius: 30px;
-  color: #fff;
+  color: #fff !important;
   padding: 1.5%;
   margin: 0 2%;
   text-align: center;
