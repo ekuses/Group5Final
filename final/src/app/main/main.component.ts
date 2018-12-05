@@ -169,9 +169,30 @@ export class MainComponent implements OnInit, AfterViewInit  {
       for (var i = 0; i < theaters.length; i++) {
         var theater = theaters[i];
         var avg = this.avgTh[i];
+
+        //Code used to determine color of busy bar
+        var barColor= "";
+        if (avg >= 4)
+        {
+          barColor = "bg-danger";
+        }
+        else if (avg >= 3)
+        {
+          barColor = "bg-warning";
+        }
+        else
+        {
+          barColor = "bg-success";
+        }
+
         var content = '<div class="maprow" id="popup" >'+
 					'<div id="c1" style="float: left; width: 70%;">'+
 						'<h2 style="display: inline-block;">'+theater[0]+'</h2>'+
+            '<div class="progress">' +
+              '<div class="progress-bar '+barColor+ '" role="progressbar" aria-valuenow="' + this.avgTh[i]*20+ '"aria-valuemin="0" aria-valuemax="100" style="width:'+(this.avgTh[i]-1)*25+'%">' +
+                this.avgTh[i]+
+              '</div>' +
+            '</div>' +
 						'<h4>Today\'s busy level: '+this.avgTh[i]+'/5</h4>'+
 					'</div>'+
 					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
@@ -186,7 +207,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
           position: new google.maps.LatLng(Number (theater[1]), Number (theater[2])),
           map: map,
           title: tstring,
-        });
+        } );
 
         var myloc = 0;
 

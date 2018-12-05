@@ -51,7 +51,7 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Royal Park</h3>
-      <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="this.royalParkAvg*20">{{royalParkAvg}}</ngb-progressbar></p>
+      <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="(this.royalParkAvg-1)*25">{{royalParkAvg}}</ngb-progressbar></p>
 
     </header>
       <input [(ngModel)]="searchText" placeholder="search by title">
@@ -89,7 +89,7 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Celebration Point</h3>
-      <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="this.celebrationAvg*20">{{celebrationAvg}}</ngb-progressbar></p>
+      <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="(this.celebrationAvg-1)*25">{{celebrationAvg}}</ngb-progressbar></p>
     </header>
     <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
@@ -125,7 +125,7 @@
     <header>
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
       <h3>Butler Plaza</h3>
-      <p><ngb-progressbar type="{{this.butlerBar}}" [value]="this.butlerAvg*20">{{butlerAvg}}</ngb-progressbar></p>
+      <p><ngb-progressbar type="{{this.butlerBar}}" [value]="(this.butlerAvg-1)*25">{{butlerAvg}}</ngb-progressbar></p>
     </header>
     <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
