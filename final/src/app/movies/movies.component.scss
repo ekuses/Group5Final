@@ -35,6 +35,9 @@ div {
   flex-basis: 50%;
   padding: 1rem;
   transition: all .2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .movie-option {
   background: linear-gradient(rgba(0,0,0,0.85), rgba(255,255,255,0.10)),
@@ -44,6 +47,9 @@ div {
   flex:1;
   padding: 1rem;
   transition: all .2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h5{
   button {
@@ -63,6 +69,9 @@ h5{
   flex-basis: 50%;
   padding: 1rem;
   transition: all .2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .option-top:hover, .option-bottom:hover, .movie-option:hover {
