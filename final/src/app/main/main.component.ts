@@ -253,7 +253,8 @@ export class MainComponent implements OnInit, AfterViewInit  {
             }
           });
         });
-
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
 
           document.getElementById("chekin").addEventListener("click", function() {
@@ -285,8 +286,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
               });
           });
 
-          var directionsService = new google.maps.DirectionsService;
-          var directionsDisplay = new google.maps.DirectionsRenderer;
+
           document.getElementById("navigate").addEventListener("click", function() {
 
             directionsService.route({
@@ -313,6 +313,8 @@ export class MainComponent implements OnInit, AfterViewInit  {
 
         google.maps.event.addListener(marker, 'click', function(content){
           return function(){
+           directionsDisplay.setMap(null);
+
             infowindow.setContent(content);
             infowindow.open(map, this);
           }
