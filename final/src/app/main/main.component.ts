@@ -287,20 +287,21 @@ export class MainComponent implements OnInit, AfterViewInit  {
 
           var directionsService = new google.maps.DirectionsService;
           var directionsDisplay = new google.maps.DirectionsRenderer;
-          var latit = marker.getPosition().lat();
-          var longit = marker.getPosition().lng();
           document.getElementById("navigate").addEventListener("click", function() {
 
             directionsService.route({
                 origin: myloc,
-                destination: {
-                    lat: latit,
-                    lng: longit
-                },
+                destination: infowindow.position,
                 travelMode: 'DRIVING'
             },function(response, status) {
                 if (status === 'OK') {
                     directionsDisplay.setDirections(response);
+                    directionsDisplay.setMap(map);
+                    infowindow.setContent('<button type="button" name="hideDir" class="btn btn-info" id="hideDir" >Hide Directions</button>');
+                    document.getElementById("hideDir").addEventListener("click", function() {
+                      directionsDisplay.setMap(null);
+                      infowindow.close();
+                    });
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
