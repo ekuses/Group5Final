@@ -32,6 +32,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
   checkInButler = null;
   checkInCelebration = null;
   checkInRoyalPark = null;
+  feedBackRef = null;
   busyButler : Observable<any[]>;
   busyCelebration : Observable<any[]>;
   busyRoyalPark : Observable<any[]>;
@@ -81,6 +82,7 @@ export class MainComponent implements OnInit, AfterViewInit  {
     this.checkInButler = afs.collection('theaters/desc/Butler');
     this.checkInCelebration = afs.collection('theaters/desc/Celebration');
     this.checkInRoyalPark = afs.collection('theaters/desc/RoyalPark');
+    this.feedBackRef =  afs.collection('feedback/');
     this.moviesRef = afs.doc('movies/ex');
     this.busyButler = afs.collection('theaters/desc/Butler', ref => ref.where('date', '>=', (Date.now() - 86400000))).valueChanges();
     this.busyCelebration = afs.collection('theaters/desc/Celebration', ref => ref.where('date', '>=', (Date.now() - 86400000))).valueChanges();
@@ -331,6 +333,10 @@ export class MainComponent implements OnInit, AfterViewInit  {
     hideCheckIn()
     {
       this.showCheckin="none";
+    }
+
+    public feedBackDb(){
+      this.feedBackRef.add({ busy:  busyValue, date: Date.now() });
     }
 
     public checkInRoyalParkf(busyValue){
