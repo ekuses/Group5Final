@@ -48,13 +48,13 @@
   </section>
 
   <section class="newberry-container" [ngStyle]="{'display':showNewberry}">
-    <header>
+    <header class="mt-2">
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
       <h3>Royal Park</h3>
       <p><ngb-progressbar type="{{this.royalParkBar}}" [value]="(this.royalParkAvg-1)*25">{{royalParkAvg}}</ngb-progressbar></p>
 
     </header>
-      <input [(ngModel)]="searchText" placeholder="search by title">
       <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of newberryMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
@@ -86,12 +86,12 @@
   </section>
 
   <section class="celebration-container" [ngStyle]="{'display':showCelebration}">
-    <header>
+    <header class="mt-2">
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
       <h3>Celebration Point</h3>
       <p><ngb-progressbar type="{{this.celebrationBar}}" [value]="(this.celebrationAvg-1)*25">{{celebrationAvg}}</ngb-progressbar></p>
     </header>
-    <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let movie of celebrationMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
           <ng-template ngbPanelTitle class="overflow-wrap">
@@ -122,12 +122,12 @@
   </section>
 
   <section class="butler-container" [ngStyle]="{'display':showButler}">
-    <header>
+    <header class="mt-2">
       <button class="btn btn-primary" (click)="doShowTheaters()">Back</button>
+      <input class="ml-4" [(ngModel)]="searchText" placeholder="search by title">
       <h3>Butler Plaza</h3>
       <p><ngb-progressbar type="{{this.butlerBar}}" [value]="(this.butlerAvg-1)*25">{{butlerAvg}}</ngb-progressbar></p>
     </header>
-    <input [(ngModel)]="searchText" placeholder="search by title">
     <ngb-accordion [closeOthers]="true">
       <ngb-panel *ngFor="let movie of butlerMoviesArr | filter : searchText; let i = index;" id="static-{{i}}" >
         <ng-template ngbPanelTitle class="overflow-wrap">

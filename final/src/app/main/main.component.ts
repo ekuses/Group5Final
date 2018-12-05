@@ -188,12 +188,12 @@ export class MainComponent implements OnInit, AfterViewInit  {
         var content = '<div class="maprow" id="popup" >'+
 					'<div id="c1" style="float: left; width: 70%;">'+
 						'<h2 style="display: inline-block;">'+theater[0]+'</h2>'+
+            '<h4>Today\'s busy level:</h4>'+
             '<div class="progress">' +
               '<div class="progress-bar '+barColor+ '" role="progressbar" aria-valuenow="' + this.avgTh[i]*20+ '"aria-valuemin="0" aria-valuemax="100" style="width:'+(this.avgTh[i]-1)*25+'%">' +
                 this.avgTh[i]+
               '</div>' +
             '</div>' +
-						'<h4>Today\'s busy level: '+this.avgTh[i]+'/5</h4>'+
 					'</div>'+
 					'<div id="c2" value="tstring" style="float: center; width: 30%; display: inline-block;">'+
 						'<button type="button" class="btn btn-info btn-block" id="chekin">Check in</button> '+
@@ -253,7 +253,8 @@ export class MainComponent implements OnInit, AfterViewInit  {
             }
           });
         });
-
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;
         google.maps.event.addListener(infowindow, 'domready', function(tstring) {
 
           document.getElementById("chekin").addEventListener("click", function() {
@@ -285,22 +286,22 @@ export class MainComponent implements OnInit, AfterViewInit  {
               });
           });
 
-          var directionsService = new google.maps.DirectionsService;
-          var directionsDisplay = new google.maps.DirectionsRenderer;
-          var latit = marker.getPosition().lat();
-          var longit = marker.getPosition().lng();
+
           document.getElementById("navigate").addEventListener("click", function() {
 
             directionsService.route({
                 origin: myloc,
-                destination: {
-                    lat: latit,
-                    lng: longit
-                },
+                destination: infowindow.position,
                 travelMode: 'DRIVING'
             },function(response, status) {
                 if (status === 'OK') {
                     directionsDisplay.setDirections(response);
+                    directionsDisplay.setMap(map);
+                    infowindow.setContent('<button type="button" name="hideDir" class="btn btn-info" id="hideDir" >Hide Directions</button>');
+                    document.getElementById("hideDir").addEventListener("click", function() {
+                      directionsDisplay.setMap(null);
+                      infowindow.close();
+                    });
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
@@ -312,6 +313,8 @@ export class MainComponent implements OnInit, AfterViewInit  {
 
         google.maps.event.addListener(marker, 'click', function(content){
           return function(){
+           directionsDisplay.setMap(null);
+
             infowindow.setContent(content);
             infowindow.open(map, this);
           }
